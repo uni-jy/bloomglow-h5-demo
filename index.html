@@ -235,14 +235,23 @@ body.export .spec{display:none}
 body.export .shot.has-spec.show{display:block;width:390px}
 @media (max-width:520px){.spec{width:auto;margin:16px 20px 0}}
 
-/* screens with a spec card: phone left, spec right (desktop) */
+/* screens with a spec card: phone left, spec right (single-screen mode on a computer) */
 @media (min-width:521px){
-  .shot.has-spec{display:grid;grid-template-columns:390px 360px;column-gap:28px;align-items:start;width:auto;grid-column:span 2;justify-self:center}
-  .shot.has-spec > .cap,.shot.has-spec > .single-nav{grid-column:1 / -1}
-  .shot.has-spec > .phone{grid-column:1}
-  .shot.has-spec > .spec{grid-column:2;width:auto;margin-top:0;position:sticky;top:24px}
-  body.single .shot.has-spec.show{display:grid;width:auto}
+  body.single .shot.has-spec.show{display:grid;grid-template-columns:390px 360px;column-gap:28px;align-items:start;width:auto}
+  body.single .shot.has-spec > .cap,body.single .shot.has-spec > .single-nav{grid-column:1 / -1}
+  body.single .shot.has-spec > .phone{grid-column:1}
+  body.single .shot.has-spec > .spec{grid-column:2;width:auto;margin-top:0;position:sticky;top:24px}
+  /* overview: phones only in a tidy grid; spec cards collected in one board below */
+  body:not(.single) .shot .spec{display:none}
+  .spec-board{max-width:1500px;margin:0 auto;padding:8px 40px 72px}
+  .spec-board h2{font-family:var(--serif);font-weight:400;font-size:26px;margin:0 0 4px}
+  .spec-board > p{margin:0 0 18px;color:var(--muted);font-size:13px}
+  .spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
+  .spec-board .spec{width:auto;margin:0}
+  .spec-board .spec h4{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .spec-board .spec h4 a{font-size:12px;color:var(--plum);text-decoration:none;font-weight:600;white-space:nowrap}
 }
+@media (max-width:520px){.spec-board{display:none}}
 /* click-through mode on a computer: keep the phone size, centered */
 @media (min-width:521px){
   body.single{background:#e9e5ef;min-height:100vh}
@@ -274,7 +283,7 @@ body.export .scroll{overflow:hidden}
 
 <header class="gallery-head">
   <h1>BLOOM GLOW 达人端 H5 demo</h1>
-  <p>按达人从"收到链接"到"日常查看"的顺序排列，共 10 屏。视觉沿用官网的配色与字体；数据、账号、商品均为示意。点击按钮可在屏幕间跳转。第 2、3、4、10 屏右侧（手机上在下方）写明了达人看到什么、点哪里、去哪一屏，以及每种失败怎么办。</p>
+  <p>按达人从"收到链接"到"日常查看"的顺序排列，共 10 屏。视觉沿用官网的配色与字体；数据、账号、商品均为示意。点击按钮可在屏幕间跳转。第 2、3、4、10 屏附有说明：达人看到什么、点哪里、去哪一屏，以及每种失败怎么办。总览里说明集中放在页面最下方；单屏体验时在手机屏右侧。</p>
   <p class="try"><a href="?screen=s1">在手机上逐屏点击体验</a>（像真实页面一样一屏一屏走完流程） · 语言：<b>English</b> / <a href="zh.html">中文</a></p>
 </header>
 
@@ -310,7 +319,7 @@ body.export .scroll{overflow:hidden}
 
 <!-- 2 Check & consent -->
 <section class="shot has-spec" id="s2">
-<p class="cap"><b>2 资格自查与同意</b>跳转 TikTok 前先自查条件（右侧说明卡写明每一步）</p>
+<p class="cap"><b>2 资格自查与同意</b>跳转 TikTok 前先自查条件（附说明）</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
   <div class="bar"><a class="back" href="#s1">‹ Back</a><span class="small">Step 1 of 2</span></div>
   <div class="pad">
@@ -340,7 +349,7 @@ body.export .scroll{overflow:hidden}
 
 <!-- 3 TikTok authorization (mock) -->
 <section class="shot has-spec" id="s3">
-<p class="cap"><b>3 TikTok 官方授权页</b>TikTok 的页面，按开发文档截图示意（右侧说明卡写明每一步）</p>
+<p class="cap"><b>3 TikTok 官方授权页</b>TikTok 的页面，按开发文档截图示意（附说明）</p>
 <div class="phone"><div class="status" style="background:#fff">9:41<i>●●● ▮</i></div>
   <div class="tt">
     <div class="tt-top"><b>✕</b>Authorization</div>
@@ -366,7 +375,7 @@ body.export .scroll{overflow:hidden}
 
 <!-- 4 Connected -->
 <section class="shot has-spec" id="s4">
-<p class="cap"><b>4 连接成功</b>首次授权到此结束（右侧说明卡写明每一步）</p>
+<p class="cap"><b>4 连接成功</b>首次授权到此结束（附说明）</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
   <div class="bar"><a class="brand" href="#s1"><span class="brand-ready"><svg><use href="#mark"/></svg><b>ReadyPost</b></span><span class="brand-divider" aria-hidden="true"></span><b class="brand-bloom">BLOOM <span>GLOW</span></b></a><span class="small">Step 2 of 2</span></div>
   <div class="pad">
@@ -510,7 +519,7 @@ body.export .scroll{overflow:hidden}
 
 <!-- 10 Error -->
 <section class="shot has-spec" id="s10">
-<p class="cap"><b>10 授权失败</b>每种失败一句话 + 怎么办（右侧说明卡逐条列出）</p>
+<p class="cap"><b>10 授权失败</b>每种失败一句话 + 怎么办（附说明）</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
   <div class="bar"><a class="brand" href="#s1"><span class="brand-ready"><svg><use href="#mark"/></svg><b>ReadyPost</b></span><span class="brand-divider" aria-hidden="true"></span><b class="brand-bloom">BLOOM <span>GLOW</span></b></a><span class="chip warn">Not connected</span></div>
   <div class="pad">
@@ -533,6 +542,8 @@ body.export .scroll{overflow:hidden}
 </section>
 
 </div>
+
+<section class="spec-board" id="specs" hidden><h2>第 2、3、4、10 屏怎么走</h2><p>每张卡对应上面一屏；点「单屏看」可以对照着手机屏逐屏走。</p><div class="spec-grid"></div></section>
 
 <script>
 // ?screen=s3 shows a single screen full-viewport (used for exporting images and for real-phone previews).
@@ -558,6 +569,15 @@ if (p && document.getElementById(p)) {
     const a = e.target.closest('a[href^="#s"]');
     if (a) { e.preventDefault(); show(a.getAttribute("href").slice(1)); history.replaceState(null, "", "?screen=" + a.getAttribute("href").slice(1)); }
   });
+} else {
+  // overview: collect the spec cards into one board under the phone grid
+  const board = document.getElementById("specs"), grid = board.querySelector(".spec-grid");
+  document.querySelectorAll(".shot.has-spec").forEach(sh => {
+    const card = sh.querySelector(".spec").cloneNode(true), h = card.querySelector("h4");
+    h.innerHTML = `<span>${sh.querySelector(".cap b").textContent}</span><a href="?screen=${sh.id}">单屏看 →</a>`;
+    grid.appendChild(card);
+  });
+  board.hidden = false;
 }
 </script>
 </body>
