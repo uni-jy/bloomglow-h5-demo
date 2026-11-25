@@ -237,7 +237,7 @@ body.export .shot.has-spec.show{display:block;width:390px}
 
 /* screens with a spec card: phone left, spec right (single-screen mode on a computer) */
 @media (min-width:521px){
-  body.single .shot.has-spec.show{display:grid;grid-template-columns:390px 360px;column-gap:28px;align-items:start;width:auto}
+  body.single .shot.has-spec.show{display:grid;grid-template-columns:auto 360px;column-gap:28px;align-items:start;width:auto}
   body.single .shot.has-spec > .cap,body.single .shot.has-spec > .single-nav{grid-column:1 / -1}
   body.single .shot.has-spec > .phone{grid-column:1}
   body.single .shot.has-spec > .spec{grid-column:2;width:auto;margin-top:0;position:sticky;top:24px}
@@ -252,6 +252,15 @@ body.export .shot.has-spec.show{display:block;width:390px}
   .spec-board .spec h4 a{font-size:12px;color:var(--plum);text-decoration:none;font-weight:600;white-space:nowrap}
 }
 @media (max-width:520px){.spec-board{display:none}}
+/* smaller phones on a computer: overview at 70%, click-through mode fits the window height */
+@media (min-width:521px){
+  .gallery-head,.spec-board{max-width:1560px}
+  body:not(.single) .gallery{max-width:1560px;grid-template-columns:repeat(auto-fill,minmax(273px,1fr));gap:36px 24px}
+  body:not(.single) .shot{width:273px}
+  body:not(.single) .shot .phone{zoom:.7}
+  body.single:not(.export) .phone{zoom:var(--pz,1)}
+  body.single:not(.export) .shot.show{width:auto}
+}
 /* click-through mode on a computer: keep the phone size, centered */
 @media (min-width:521px){
   body.single{background:#e9e5ef;min-height:100vh}
@@ -563,6 +572,10 @@ if (p && document.getElementById(p)) {
         `<a href="./${SELF}">查看 10 屏总览</a>` + (i < order.length - 1 ? `<a href="#${order[i+1]}">下一屏 ›</a>` : "");
       sh.appendChild(nav);
     });
+  }
+  if (!document.body.classList.contains("export")) {
+    const fit = () => document.documentElement.style.setProperty("--pz", Math.max(.6, Math.min(1, (innerHeight - 130) / 864)).toFixed(3));
+    fit(); addEventListener("resize", fit);
   }
   show(p);
   document.addEventListener("click", e => {
