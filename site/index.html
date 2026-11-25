@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta name="robots" content="noindex"><!-- GitHub Pages 预览副本：去掉 base，素材用本目录 assets/；原稿在公司仓库 creator-site/改版稿-20261124.html --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLOOM GLOW — We create. You earn.</title>
+<style>
+:root{--ink:#111;--mute:#5b6470;--line:#e6e8eb;--brand:#997BB9;--bg:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Inter,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+header a.btn{font-size:14px}
+.brand,.brand-ready{display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+.brand{gap:13px;font-size:20px;line-height:1.1;letter-spacing:-.01em}
+.brand img{display:block;width:36px;height:36px}
+.brand-divider{width:1px;height:22px;background:var(--line)}
+.brand-bloom span{font-weight:400;color:var(--mute)}
+.hero{padding:56px 0 36px}
+h1{font-size:40px;line-height:1.15;margin:0 0 14px;letter-spacing:-.01em}
+.lead{font-size:19px;color:var(--mute);max-width:640px;margin:0 0 26px}
+.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:13px 22px;border-radius:8px;font-weight:600;font-size:16px}
+.btn.ghost{background:#fff;color:var(--brand);border:1.5px solid var(--brand);margin-left:10px}
+.badges{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;font-size:14px;color:var(--mute)}
+.badges span::before{content:"✓ ";color:var(--brand);font-weight:700}
+h2{font-size:24px;margin:48px 0 16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{border:1px solid var(--line);border-radius:10px;padding:18px}
+.step .n{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;text-align:center;line-height:28px;font-weight:700;margin-bottom:10px}
+.step h3{margin:0 0 6px;font-size:17px}.step p{margin:0;color:var(--mute);font-size:15px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{margin:0 0 10px;font-size:17px}.card ul{margin:0;padding-left:18px;color:var(--mute);font-size:15px}.card li{margin:6px 0}
+.faq details{border-bottom:1px solid var(--line);padding:12px 0}.faq summary{cursor:pointer;font-weight:600;font-size:16px}.faq p{margin:8px 0 0;color:var(--mute);font-size:15px}
+.cta{background:#f6f3fa;border-radius:12px;padding:30px;margin:48px 0 24px;text-align:center}
+.cta h2{margin:0 0 8px}.cta p{color:var(--mute);margin:0 0 18px}
+footer{color:var(--mute);font-size:13px;padding:18px 0 40px;border-top:1px solid var(--line)}
+footer a{color:var(--mute)}
+header{gap:12px}header a.btn{flex-shrink:0}
+.section-lead{font-size:17px;color:var(--mute);max-width:640px;margin:-4px 0 20px}
+.samples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.sample{margin:0;min-width:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:white;box-shadow:0 8px 28px #17122505}
+.sample>.sample-cover{display:block;width:100%;height:auto;aspect-ratio:9/12;object-fit:cover;object-position:center 40%;background:#f6f3fa}
+.analytics-panel{padding:20px 16px 16px;background:#fff;border-top:1px solid #f0f1f2}
+.analytics-panel h3{font-size:17px;line-height:1.25;margin:0 0 4px;font-weight:700}.analytics-period{font-size:11px;line-height:1.4;color:#7b8186;margin:0 0 18px}
+.analytics-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0}.analytics-field{min-width:0}.analytics-field dt{font-size:10px;line-height:1.3;color:#7b8186;white-space:nowrap;letter-spacing:-.15px;margin:0 0 6px}.analytics-field dt span{display:inline-flex;border:1px solid #a2a7aa;border-radius:50%;font-size:7px;width:9px;height:9px;align-items:center;justify-content:center;margin-left:2px;vertical-align:1px}.analytics-field dd{font-size:22px;line-height:1.15;font-weight:650;letter-spacing:-.6px;margin:0;color:#111}.analytics-footnote{font-size:11px;line-height:1.45;color:#747b83;margin:14px 0 0}
+.source-note{font-size:12px;line-height:1.55;color:#747b83;margin:12px 0 0}.sample .source-note{padding:0 16px 16px;margin:0;font-size:11px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;padding:50px 0 60px}
+.hero-copy{min-width:0}.eyebrow{font-size:12px;letter-spacing:.12em;font-weight:650;color:#80669b;text-transform:uppercase;margin:0 0 18px}
+h1{font-size:48px;line-height:1.08;letter-spacing:-.035em}.lead{font-size:17px;line-height:1.65}.hero .badges{gap:8px 18px;font-size:12px}
+.motion-stage{height:530px;display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;overflow:hidden;padding:12px;mask-image:linear-gradient(transparent,#000 6%,#000 94%,transparent)}
+.motion-column{display:flex;flex-direction:column;gap:14px;animation:reel-drift 4s ease-in-out 1 both}.motion-column:nth-child(2){padding-top:48px;animation-direction:reverse}
+.motion-tile{margin:0;position:relative;flex-shrink:0;overflow:hidden;border-radius:13px;box-shadow:0 10px 30px #24173014;height:282px}
+.motion-tile img{height:100%;width:100%;object-fit:cover}.motion-tag{position:absolute;bottom:12px;left:12px;background:#ffffffeb;border:1px solid #ffffffaa;padding:4px 9px;border-radius:20px;font-size:10px;font-weight:600}
+@keyframes reel-drift{from{transform:translateY(0)}to{transform:translateY(-66px)}}
+.wall-heading{display:flex;justify-content:space-between;gap:20px;align-items:end;margin:60px 0 20px}.wall-heading h2{margin:0 0 8px}.wall-heading p{margin:0;color:var(--mute);font-size:16px;max-width:650px}
+.reel-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.reel{margin:0;min-width:0}.reel:nth-child(even){padding-top:28px}.reel video{display:block;width:100%;aspect-ratio:9/16;border-radius:13px;object-fit:cover;background:#f6f3fa;box-shadow:0 10px 30px #1712250a}.reel figcaption{font-size:12px;color:var(--mute);padding:12px 0}.reel figcaption strong{color:#222;font-weight:600;display:block;font-size:14px}
+.reveal{transition:opacity .65s ease,transform .65s ease}.js-motion .reveal{opacity:0;transform:translateY(20px)}.js-motion .reveal.is-visible{opacity:1;transform:none}
+.motion-paused .motion-column{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.motion-column{animation:none}.reveal,.js-motion .reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:900px){.hero{gap:24px}h1{font-size:39px}.motion-stage{height:470px}.motion-tile{height:250px}}
+@media(max-width:700px){.hero{grid-template-columns:1fr;padding:36px 0 18px;gap:22px}.hero h1{font-size:30px}.motion-stage{order:-1;height:290px;max-width:460px;width:100%;margin:0 auto}.motion-tile{height:218px}.reel-wall{grid-template-columns:1fr 1fr;gap:16px}.reel:nth-child(even){padding-top:22px}.wall-heading{align-items:start;flex-direction:column}.samples{grid-template-columns:1fr;gap:24px}.sample>.sample-cover{aspect-ratio:9/12}.analytics-panel{padding:18px 14px 15px}.analytics-panel h3{font-size:17px}.analytics-period{font-size:11px}.analytics-field dt{font-size:11px}.analytics-field dd{font-size:24px}.analytics-footnote{font-size:11px}}
+footer{overflow-wrap:anywhere}.cta .btn{max-width:100%;overflow-wrap:anywhere}a:focus-visible,summary:focus-visible{outline:3px solid #997BB9;outline-offset:4px}
+@media(max-width:700px){.samples{grid-template-columns:1fr;gap:28px}}
+@media(max-width:450px){.brand,.brand-ready{gap:7px}.brand{font-size:clamp(13px,3.8vw,17px)}.brand img{width:28px;height:28px}.brand-divider{height:18px}}
+@media(max-width:400px){.wrap{padding:0 20px}header a.btn{padding:10px 14px}}
+@media(max-width:360px){header{gap:8px}.brand,.brand-ready{gap:5px}.brand{font-size:12px}.brand img{width:24px;height:24px}header a.btn{padding-inline:9px}}
+@media(max-width:700px){.steps,.two{grid-template-columns:1fr}h1{font-size:30px}.btn.ghost{margin:10px 0 0}}
+.analytics-panel{padding:18px 16px 16px;background:#fff;border-top:1px solid #f0f1f2}.analytics-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:0}.analytics-field{min-width:0}.analytics-field dt{font-size:11px;line-height:1.3;color:#7b8186;white-space:nowrap;margin:0 0 6px}.analytics-field dd{font-size:25px;line-height:1.15;font-weight:650;letter-spacing:-.6px;margin:0;color:#111}.analytics-panel h3,.analytics-period,.analytics-footnote{display:none}@media(max-width:700px){.analytics-panel{padding:18px 14px 15px}.analytics-field dt{font-size:12px}.analytics-field dd{font-size:28px}}
+
+.hero .value-headline{margin:0 0 26px;letter-spacing:-.045em;font-weight:800}
+.value-service{display:block;font-size:clamp(26px,2.5vw,36px);line-height:1.18;color:#27242b;letter-spacing:-.035em;margin-bottom:16px}
+.value-payoff{display:block;font-size:clamp(64px,6.4vw,88px);line-height:.99;color:#80609e;letter-spacing:-.055em}
+@media(max-width:900px){.value-service{font-size:27px}.value-payoff{font-size:66px}}
+@media(max-width:700px){.hero .value-headline{margin-bottom:24px}.value-service{font-size:25px;line-height:1.2;margin-bottom:14px}.value-payoff{font-size:64px;line-height:1}}
+
+/* Earnings stay on the content, with a scroll-triggered entrance. */
+.sample{position:relative;isolation:isolate;border:0;border-radius:18px;background:#17151a;box-shadow:0 12px 32px #17122515}
+.sample>.sample-cover{aspect-ratio:9/14;border-radius:0;object-position:center}
+.sample>figcaption{position:absolute;inset:auto 0 0;z-index:1;padding:90px 22px 24px;background:linear-gradient(180deg,transparent 0%,rgba(15,12,20,.58) 40%,rgba(15,12,20,.92) 100%);pointer-events:none}
+.sample .analytics-panel{padding:0;background:transparent;border:0}
+.sample .analytics-fields{grid-template-columns:.9fr 1.1fr;gap:16px;align-items:end}
+.sample .analytics-field dt{color:#ece5f3;font-size:12px;letter-spacing:.04em;margin-bottom:8px}
+.sample .analytics-field dd{color:#fff;font-size:32px;line-height:1;font-weight:750;text-shadow:0 2px 14px #0003;letter-spacing:-.04em}
+.sample .analytics-field:last-child dd{font-size:48px;font-weight:800;color:#f1dcff}
+.js-motion .sample .analytics-fields{opacity:0;transform:translateY(34px);transition:opacity .65s ease .12s,transform .75s cubic-bezier(.2,.75,.25,1) .12s}
+.js-motion .sample.is-visible .analytics-fields{opacity:1;transform:none}
+@media(max-width:900px) and (min-width:701px){.sample>figcaption{padding:70px 16px 20px}.sample .analytics-field dd{font-size:26px}.sample .analytics-field:last-child dd{font-size:38px}}
+@media(max-width:700px){.sample>.sample-cover{aspect-ratio:9/14}.sample>figcaption{padding:90px 20px 24px}.sample .analytics-field dd{font-size:34px}.sample .analytics-field:last-child dd{font-size:52px}}
+@media(prefers-reduced-motion:reduce){.js-motion .sample .analytics-fields{opacity:1;transform:none;transition:none}}
+.cta .contact-email{margin:14px 0 0;font-size:13px}.contact-email a{color:var(--mute);text-decoration:none}
+
+.earnings-confetti{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.confetti-piece{position:absolute;top:10%;left:var(--x);width:var(--w);height:var(--h);background:var(--color);border-radius:2px;opacity:0}
+.sample.celebrate .confetti-piece{animation:earnings-confetti 3.4s cubic-bezier(.15,.65,.45,1) var(--delay) both}
+.confetti-piece.ribbon{border-radius:0 7px 0 7px;background:transparent;border:2px solid var(--color);width:10px;height:30px}
+@keyframes earnings-confetti{0%{opacity:0;transform:translate(0,-50px) rotate(0deg)}12%{opacity:1}75%{opacity:.95}100%{opacity:0;transform:translate(var(--drift),420px) rotate(var(--spin))}}
+.sample .analytics-field dd{font-variant-numeric:tabular-nums;overflow:hidden}
+.money-number{display:inline-block}
+.sample.celebrate .analytics-field:last-child dd{animation:commission-glow 2.8s ease-out .25s both}
+@keyframes commission-glow{0%,100%{text-shadow:0 2px 14px #0003}32%{text-shadow:0 0 12px #f4d1ffb3,0 0 26px #bd82dd80}55%{transform:scale(1.07)}75%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.sample.celebrate .confetti-piece,.sample.celebrate .analytics-field:last-child dd{animation:none}.earnings-confetti{display:none}}
+
+.creator-flow{--card-width:340px;--flow-distance:2520px;overflow:hidden;position:relative;margin-top:20px;padding:0 0 18px}
+.flow-track{display:flex;width:max-content;gap:20px;animation:creator-flow 70s linear infinite;animation-play-state:paused;will-change:transform}
+.creator-flow.in-view .flow-track{animation-play-state:running}
+.flow-track>.sample{flex:0 0 var(--card-width);width:var(--card-width);margin:0;opacity:1;transform:none}
+.sample>.flow-video{display:block;width:100%;aspect-ratio:9/14;object-fit:cover;background:#17151a}
+.sample>figcaption{opacity:0;transform:translateY(34px);transition:opacity .65s ease,transform .75s cubic-bezier(.2,.75,.25,1)}
+.sample.earnings-visible>figcaption{opacity:1;transform:none}
+.js-motion .sample .analytics-fields,.js-motion .sample.is-visible .analytics-fields{opacity:1;transform:none;transition:none}
+.earnings-confetti{z-index:2}
+.showcase-card>figcaption{opacity:1;transform:none;padding:70px 20px 22px;display:flex;gap:10px;justify-content:space-between;align-items:center;color:white}
+.sample-language{font-weight:650;font-size:15px}.sample-type{font-size:11px;color:#eee2f7}
+@keyframes creator-flow{0.0000%,12.8357%{transform:translateX(calc(-0 * var(--card-step)))}14.2857%,27.1214%{transform:translateX(calc(-1 * var(--card-step)))}28.5714%,41.4071%{transform:translateX(calc(-2 * var(--card-step)))}42.8571%,55.6929%{transform:translateX(calc(-3 * var(--card-step)))}57.1429%,69.9786%{transform:translateX(calc(-4 * var(--card-step)))}71.4286%,84.2643%{transform:translateX(calc(-5 * var(--card-step)))}85.7143%,98.5500%{transform:translateX(calc(-6 * var(--card-step)))}100%{transform:translateX(calc(-1 * var(--flow-distance)))}}
+@media(hover:hover){.creator-flow:hover .flow-track{animation-play-state:paused}}
+.creator-flow:focus-within .flow-track{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.flow-track,.creator-flow.in-view .flow-track{animation:none;transform:none}.creator-flow{overflow-x:auto}.sample>figcaption{opacity:1;transform:none;transition:none}.flow-track>.sample[aria-hidden="true"]{display:none}}
+
+/* Size the message against its own column instead of the browser width. */
+.hero{grid-template-columns:.94fr 1.06fr;gap:26px;padding:32px 0 38px}
+.hero-copy{container-type:inline-size}
+.hero .eyebrow{font-size:11px;letter-spacing:.09em;margin-bottom:18px}
+.hero .value-service{font-size:clamp(24px,7.8cqw,42px);line-height:1.15;margin-bottom:16px}
+.hero .value-payoff{font-size:clamp(62px,23cqw,124px);line-height:.97;letter-spacing:-.06em}
+.hero .value-headline{margin-bottom:24px}
+.hero .badges{gap:8px;margin-top:18px;align-items:center}
+.hero .badges span{display:inline-flex;align-items:center;min-height:34px;padding:7px 11px;border:1px solid #e3daec;border-radius:7px;background:#f6f2fa;color:#665075;font-size:11px;font-weight:600;line-height:1.3}
+.hero .badges span::before{content:none}
+.hero .motion-stage{padding:0 4px;height:550px}
+@media(max-width:900px) and (min-width:701px){.hero{gap:20px}.hero .eyebrow{font-size:10px}.hero .badges span{font-size:10px;padding:7px 9px}}
+@media(max-width:700px){.hero{grid-template-columns:1fr;gap:24px;padding:20px 0 28px}.hero .motion-stage{height:260px}.hero .value-service{font-size:clamp(24px,7.8cqw,32px)}.hero .value-payoff{font-size:clamp(62px,23cqw,86px)}.hero .badges span{font-size:11px}.hero .eyebrow{font-size:10px;margin-bottom:16px}}
+
+/* Actions are buttons; reassurance is plain text. */
+.btn{background:#171717;color:#fff;transition:background .2s ease,box-shadow .2s ease}
+.btn.ghost{background:#fff;color:#171717;border:1.5px solid #171717;margin:0}
+.btn:hover{background:#333}.btn.ghost:hover{background:#f4f4f4}
+.hero-actions{display:block;width:min(100%,190px)}
+.hero-actions .btn{display:flex;justify-content:center;align-items:center;min-height:52px;padding:12px 10px;text-align:center;line-height:1.2;width:100%}
+.btn:not(.ghost){animation:join-breathe 2.8s ease-in-out infinite}
+@keyframes join-breathe{0%,100%{box-shadow:0 0 0 0 rgba(23,23,23,0)}50%{box-shadow:0 0 0 7px rgba(23,23,23,.1)}}
+.hero .badges{display:flex;gap:0;margin-top:22px;align-items:center;flex-wrap:wrap;color:#666}
+.hero .badges span{display:inline;padding:0;min-height:0;border:0;border-radius:0;background:transparent;font-size:11px;font-weight:500;line-height:1.5;color:#666}
+.hero .badges span+span::before{content:'·';display:inline;margin:0 10px;color:#aaa;font-weight:600}
+.hero .badges span:first-child::before{content:none}
+@media(max-width:700px){.hero-actions{width:min(100%,190px)}.hero-actions .btn{font-size:14px;min-height:52px}.hero .badges span{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.btn:not(.ghost){animation:none}}
+
+
+/* Only earn carries the headline accent. */
+.hero .value-payoff{color:#27242b;white-space:nowrap;font-size:clamp(62px,21cqw,112px);line-height:1.04}
+.value-payoff em{font-style:normal;color:#80609e}
+.hero .eyebrow{color:#6e6873}
+.btn:not(.ghost){background:#997BB9;color:#fff;border:1px solid #997BB9;font-weight:750}
+.btn:not(.ghost):hover{background:#8969aa}
+.hero-actions .btn.ghost{background:transparent;color:#77717c;border-color:transparent;font-weight:500;box-shadow:none}
+.hero-actions .btn.ghost:hover{background:transparent;color:#333;text-decoration:underline;text-underline-offset:5px}
+@keyframes join-breathe{0%,100%{box-shadow:0 3px 12px #997BB933,0 0 0 0 #997BB900}50%{box-shadow:0 6px 20px #997BB955,0 0 0 5px #997BB91c}}
+@media(max-width:700px){.hero .value-payoff{font-size:clamp(62px,21cqw,86px)}}
+
+/* demo 11/24 */
+.dm-bar{background:#FFF4C2;color:#5b4a00;font:13px/1.5 -apple-system,"PingFang SC",sans-serif;padding:8px 16px;text-align:center;border-bottom:1px solid #e9d98a}
+.dm-tag{display:inline-block;background:#FFE36E;color:#4a3d00;font:700 11px/1.6 -apple-system,"PingFang SC",sans-serif;border-radius:4px;padding:0 6px;margin:0 0 6px;vertical-align:middle;letter-spacing:0}
+.dm-ph{border:2px dashed #b9a7d6;border-radius:14px;background:#faf7ff;color:#5a4b78;font:14px/1.6 -apple-system,"PingFang SC",sans-serif;padding:18px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:150px}
+.dm-ph b{font-size:13px;color:#7a5fb0}
+.dm-who{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.dm-who button{font:600 13px/1 inherit;border:1px solid #d8cdea;background:#fff;color:#4b3f66;border-radius:999px;padding:9px 14px;cursor:pointer}
+.dm-who button.on{background:#997BB9;border-color:#997BB9;color:#fff}
+.dm-sub{font-size:17px;line-height:1.5;color:#4a4458;margin:14px 0 18px;max-width:30em}
+.dm-form{display:flex;flex-wrap:wrap;gap:8px;max-width:520px}
+.dm-form input{flex:1 1 180px;min-width:0;font:15px/1.2 inherit;padding:13px 14px;border:1px solid #cfc6de;border-radius:10px;background:#fff}
+.dm-form .btn{border:0;cursor:pointer;font:inherit;font-weight:700}
+.dm-ok{display:none;max-width:520px;background:#f1ecfa;border:1px solid #d8cdea;border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.5}
+.dm-trust{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:520px;gap:10px;margin:22px 0 0;padding:0;list-style:none}
+.dm-trust li{background:#fff;border:1px solid #e6e0ef;border-radius:12px;padding:12px 12px 13px;font-size:13px;line-height:1.45;color:#4a4458}
+.dm-trust b{display:block;font-size:14px;color:#1f1b2a;margin-bottom:2px}
+.dm-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 6px}
+.dm-split div{border:1px solid #e6e0ef;border-radius:14px;padding:18px;background:#fff}
+.dm-split b{display:block;font-size:40px;line-height:1.1;color:#997BB9}
+.dm-split span{font-size:14px;color:#4a4458}
+.dm-story{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px;margin:8px 0 6px}
+.dm-steps4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media(max-width:760px){.dm-trust{grid-template-columns:1fr 1fr}.dm-story,.dm-steps4,.dm-split{grid-template-columns:1fr}}
+
+.dm-line{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:14px;color:#4a4458;max-width:520px}
+.dm-agree{margin:56px 0 10px;padding:30px 30px 26px;border-radius:22px;background:linear-gradient(180deg,#f6f1fc,#fbf9fe);border:1px solid #e6dff2}
+.dm-agree h2{margin:6px 0 6px}
+.dm-agree-sub{font-size:16px;color:#4a4458;margin:0 0 22px;max-width:36em}
+.dm-agree-grid{display:grid;grid-template-columns:210px minmax(0,1fr) 210px;gap:26px;align-items:start}
+.dm-phone-screen{aspect-ratio:9/17;border-radius:26px;border:8px solid #1f1b2a;background:#fff;min-height:0;padding:14px;font-size:12.5px;text-align:left;box-shadow:0 14px 30px rgba(60,40,100,.14)}
+.dm-cap{font-size:13px;font-weight:600;color:#4b3f66;text-align:center;margin:10px 0 0}
+.dm-lists{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dm-list{background:#fff;border:1px solid #e6e0ef;border-radius:16px;padding:16px 16px 10px}
+.dm-list h3{margin:0 0 10px;font-size:15px;color:#2f7d4a}
+.dm-list.no h3{color:#a04545}
+.dm-list ul{list-style:none;margin:0;padding:0}
+.dm-list li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;line-height:1.4;color:#1f1b2a;padding:7px 0;border-top:1px solid #f1edf7}
+.dm-list li:first-child{border-top:0}
+.dm-list svg{flex:0 0 auto;margin-top:1px}
+.dm-verify{grid-column:1 / -1;font:12.5px/1.5 -apple-system,"PingFang SC",sans-serif;color:#5a4b78;margin:0}
+.dm-facts{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid #e6dff2}
+.dm-facts>div{font-size:13.5px;line-height:1.5;color:#4a4458}
+.dm-facts b{display:block;font-size:15px;color:#1f1b2a}
+.dm-human{display:flex;gap:12px;align-items:center}
+.dm-ava{flex:0 0 56px;width:56px;height:56px;min-height:0;border-radius:50%;padding:4px;font-size:10px;text-align:center;align-items:center}
+@media(max-width:860px){.dm-agree{padding:22px 16px}.dm-agree-grid{grid-template-columns:1fr 1fr}.dm-lists{grid-column:1 / -1;grid-row:1;grid-template-columns:1fr}.dm-facts{grid-template-columns:1fr}}
+
+/* 授权流程 demo */
+.cx-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:4px}
+.cx-cta .btn,.btn.cx-open,.btn.cx-next{border:0;cursor:pointer;font:inherit;font-weight:700}
+.cx-cta-note{font-size:13px;color:#5d5670}
+.cx-live{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;padding:10px 14px;border-radius:12px;background:#eaf5ee;border:1px solid #cfe6d6;font-size:14px;color:#1f4d32;max-width:520px}
+.cx-live a{margin-left:auto;color:#1f4d32;font-weight:600}
+.cx-dot{width:9px;height:9px;border-radius:50%;background:#2f9a57}
+.cx-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.cx-shot{appearance:none;border:1px solid #e6e0ef;background:#fff;border-radius:18px;padding:16px 14px 16px;text-align:left;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:6px;position:relative}
+.cx-shot:hover{border-color:#997BB9;box-shadow:0 8px 22px rgba(90,60,140,.10)}
+.cx-shot b{font-size:15.5px;line-height:1.3;margin-top:8px}
+.cx-shot small{font-size:13px;line-height:1.45;color:#5d5670}
+.cx-n{position:absolute;top:12px;left:12px;width:24px;height:24px;border-radius:50%;background:#997BB9;color:#fff;font:700 13px/24px inherit;text-align:center}
+.cx-mini{display:flex;flex-direction:column;gap:7px;margin:0 auto;width:118px;height:206px;border:5px solid #1f1b2a;border-radius:20px;padding:16px 10px 10px;background:#fbf9fe}
+.cx-mini.tt{background:#fff}
+.cx-mini i{font-style:normal;display:block}
+.cx-m-t{font:700 9px/1.2 inherit;color:#1f1b2a}
+.cx-m-r{height:9px;border-radius:5px;background:#e3dcef}.cx-mini.tt .cx-m-r{background:#e9e9ec}
+.cx-m-c{height:9px;width:60%;border-radius:5px;background:#cdbfe3}
+.cx-m-b{margin-top:auto;font:700 8px/2.4 inherit;text-align:center;color:#fff;background:#997BB9;border-radius:7px}
+.cx-mini.tt .cx-m-b{background:#fe2c55}
+.cx-m-ok{margin-top:34px;font:700 10px/2.2 inherit;text-align:center;color:#1f4d32;background:#dff1e5;border-radius:999px}
+.cx-ov{position:fixed;inset:0;background:rgba(28,22,44,.55);z-index:50;display:flex;align-items:flex-end;justify-content:center;padding:0}
+.cx-ov[hidden]{display:none}
+.cx-sheet{background:#fff;width:100%;max-width:440px;max-height:94vh;overflow:auto;border-radius:22px 22px 0 0;padding:14px 20px 26px;box-shadow:0 -10px 40px rgba(0,0,0,.25)}
+@media(min-width:700px){.cx-ov{align-items:center;padding:20px}.cx-sheet{border-radius:22px}}
+.cx-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cx-steps{display:flex;gap:6px}.cx-steps i{width:34px;height:4px;border-radius:2px;background:#e6e0ef}.cx-steps i.on{background:#997BB9}
+.cx-x{border:0;background:#f1edf7;width:32px;height:32px;border-radius:50%;font-size:14px;cursor:pointer;color:#4b3f66}
+.cx-pane{display:none}.cx-pane.on{display:block}
+.cx-pane h3{font-size:22px;line-height:1.2;margin:6px 0 8px}
+.cx-p{font-size:15px;color:#4a4458;margin:0 0 12px}
+.cx-check,.cx-perm{list-style:none;margin:0 0 14px;padding:0}
+.cx-check li,.cx-perm li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid #f1edf7;font-size:15px;line-height:1.4}
+.cx-check li:first-child,.cx-perm li:first-child{border-top:0}
+.cx-perm span b{display:block}.cx-perm span{color:#4a4458}.cx-perm span b{color:#1f1b2a}
+.cx-check svg,.cx-perm svg,.cx-never svg{flex:0 0 auto;margin-top:2px}
+.cx-never{display:flex;gap:10px;align-items:center;font-size:14px;color:#7a3b3b;background:#fbf2f2;border-radius:10px;padding:9px 12px;margin:0 0 14px}
+.cx-field{display:block;font-size:13px;font-weight:600;color:#4b3f66;margin:0 0 14px}
+.cx-field input{display:block;width:100%;margin-top:6px;font:16px/1.2 inherit;padding:13px 14px;border:1px solid #cfc6de;border-radius:10px}
+.cx-consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:#2a2438;background:#f6f1fc;border:1px solid #e0d6f0;border-radius:12px;padding:12px;margin:0 0 14px;cursor:pointer}
+.cx-consent input{width:20px;height:20px;flex:0 0 auto;margin:1px 0 0;accent-color:#997BB9}
+.cx-sheet .btn{width:100%;text-align:center;justify-content:center;padding:15px 18px;font-size:16px}
+.cx-sheet .btn[disabled]{opacity:.45;cursor:not-allowed}
+.cx-tip{font-size:13.5px;line-height:1.5;color:#4a4458;margin:12px 0 0;text-align:center}
+.cx-note{font:12.5px/1.5 -apple-system,"PingFang SC",sans-serif;color:#5a4b78;margin:14px 0 0}
+.cx-tt{border:1px solid #e3e3e6;border-radius:14px;padding:14px 16px 16px;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;color:#161823;background:#fff}
+.cx-tt-h{display:flex;justify-content:space-between;align-items:center;font-size:16px}
+.cx-tt-sub{font-size:12px;color:#8a8b91;text-align:center;margin:2px 0 14px}
+.cx-tt-logos{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 12px}
+.cx-tt-logos span{font:700 12px/1 inherit;border:1px solid #e3e3e6;border-radius:10px;padding:12px 10px}
+.cx-tt-logos span.k{background:#161823;color:#fff;border-color:#161823}.cx-tt-logos i{font-style:normal;color:#8a8b91}
+.cx-tt-req{font-size:14px;line-height:1.45;margin:0 0 10px}
+.cx-tt label{display:flex;gap:10px;align-items:center;font-size:14.5px;padding:9px 0;border-top:1px solid #f1f1f2;cursor:pointer}
+.cx-tt label input{width:18px;height:18px;accent-color:#fe2c55}
+.cx-tt-agree{font-size:13px!important;color:#55565c}
+.cx-tt-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.cx-tt-btns button{font:600 15px/1 inherit;padding:13px;border-radius:8px;border:1px solid #d0d1d5;background:#fff;cursor:pointer}
+.cx-tt-btns button.p{background:#fe2c55;border-color:#fe2c55;color:#fff}.cx-tt-btns button.p[disabled]{opacity:.4;cursor:not-allowed}
+.cx-demo-sw{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 14px;padding:8px 10px;border-radius:10px;background:#FFF9DC;border:1px dashed #e2cf73;font:12.5px/1.4 -apple-system,"PingFang SC",sans-serif}
+.cx-demo-sw em{font-style:normal;font-weight:700;color:#5b4a00;margin-right:4px}
+.cx-demo-sw button{font:inherit;border:1px solid #e2cf73;background:#fff;border-radius:999px;padding:4px 10px;cursor:pointer;color:#4a3d00}
+.cx-demo-sw button.on{background:#FFE36E}
+.cx-res{border-radius:16px;padding:20px 18px;border:1px solid #e6e0ef}
+.cx-res.ok{background:#eef8f1;border-color:#cfe6d6}.cx-res.bad{background:#fdf5f3;border-color:#f0d9d3}.cx-res.wait{background:#f6f1fc;border-color:#e0d6f0}
+.cx-res h3{margin:10px 0 6px;font-size:21px}
+.cx-res p{font-size:15px;line-height:1.5;color:#3a3448;margin:0 0 12px}
+.cx-res ul{margin:0 0 14px;padding-left:18px;font-size:14.5px;line-height:1.6;color:#3a3448}
+.cx-chip{display:inline-block;font:700 12.5px/1 inherit;padding:7px 12px;border-radius:999px}
+.cx-chip.ok{background:#d6efdf;color:#1f5a38}.cx-chip.bad{background:#f6ddd7;color:#8a3a2a}.cx-chip.wait{background:#e6dcf5;color:#4b3f66}
+.cx-btn-ghost{font:600 15px/1 inherit;padding:13px 16px;border-radius:10px;border:1px solid #cfc6de;background:#fff;cursor:pointer;width:100%}
+.cx-btn-ghost[disabled]{opacity:.45;cursor:not-allowed}
+.cx-manage{margin:56px 0 0}
+.cx-status{border:1px solid #e6e0ef;border-radius:18px;padding:20px;background:#fff;max-width:640px}
+.cx-status-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:8px}.cx-status-top b{font-size:17px}
+.cx-status p{font-size:15px;line-height:1.5;color:#4a4458;margin:0 0 12px}
+.cx-kv{list-style:none;margin:0 0 14px;padding:0;border-top:1px solid #f1edf7}
+.cx-kv li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #f1edf7;font-size:14.5px}.cx-kv span{color:#5d5670}
+.cx-sample{font:400 11px/1 -apple-system,"PingFang SC",sans-serif;font-style:normal;color:#8a7a2a;background:#FFF4C2;border-radius:4px;padding:2px 5px;margin-left:6px}
+.cx-disc summary{cursor:pointer;font-size:14px;color:#8a3a2a;font-weight:600}
+.cx-disc label{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;margin:12px 0}
+.cx-disc input{width:18px;height:18px;flex:0 0 auto;margin-top:2px}
+
+.cx-mini i{font-size:9px;line-height:1.25}
+.cx-m-t{font-weight:700;font-size:9.5px!important}
+.cx-m-b{font-weight:700;font-size:8.5px!important;line-height:2.5!important;text-align:center;white-space:nowrap}
+.cx-m-ok{font-weight:700;font-size:10px!important;line-height:2.2!important}
+.cx-n{font-weight:700;font-size:13px;line-height:24px}
+.cx-chip{font-weight:700;font-size:12.5px;line-height:1}
+.cx-tt-logos span{font-weight:700;font-size:12px;line-height:1}
+.cx-tt-btns button,.cx-btn-ghost{font-weight:600;font-size:15px;line-height:1;font-family:inherit}
+@media(max-width:760px){.cx-board{grid-template-columns:1fr 1fr}}
+
+/* ---- 11/25 手机版（375 宽）修正 ---- */
+[hidden]{display:none!important}
+body.clean .dm-bar,body.clean .dm-tag{display:none!important} /* ?clean=1：去掉黄色改动标签，看上线后的样子；缺素材虚线框保留 */
+.dm-line svg{flex:none}
+.cx-sample{white-space:nowrap}
+@media(max-width:700px){
+  .dm-tag{font-size:12px}
+  .dm-bar{font-size:12px;line-height:1.45;padding:6px 14px}
+  .hero{gap:14px;padding:10px 0 26px}
+  .hero .motion-stage{height:170px}
+  .hero .motion-tile{height:146px}
+  .motion-tag{font-size:12px;padding:4px 10px}
+  .dm-who{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 0 16px}
+  .dm-who button{font-size:13px;line-height:1.25;padding:8px 6px;min-height:44px;border-radius:12px}
+  .hero .eyebrow{font-size:12px;letter-spacing:.06em;margin-bottom:10px}
+  .hero .value-headline{margin-bottom:16px}
+  .hero .value-service{font-size:26px;margin-bottom:8px}
+  .hero .value-payoff{font-size:56px}
+  .dm-sub{font-size:15px;line-height:1.5;margin:0 0 12px}
+  .sample-type{font-size:12px}
+  .dm-agree a{display:inline-block;padding:10px 0}
+  .cx-cta .btn{min-height:50px;padding:0 22px;display:inline-flex;align-items:center}
+  .cx-m-t{font-size:11px!important}
+  .cx-m-b{font-size:11px!important;line-height:2.2!important}
+  .cx-m-ok{font-size:12px!important}
+  .dm-ava{font-size:12px}
+  .cx-sample{font-size:12px}
+  .cx-demo-sw button{padding:8px 12px;min-height:36px}
+  .cx-x{width:40px;height:40px}
+  footer a,.dm-trust a,a[href^="mailto:"]{display:inline-block;padding:10px 0}
+}
+</style></head><body>
+<div class="dm-bar">示例稿（11/24，按《TikTok Shop API 接入方案（达人视角）》加了官网内授权）· 黄色标签 = 改了什么 · 虚线框 = 缺素材 · 授权流程是演示，不会真的连 TikTok；点“Connect TikTok Shop”或四个手机屏可以走一遍</div>
+<div class="wrap">
+<header><span class="brand"><span class="brand-ready"><img src="logo.svg" alt="" width="36" height="36"><b>ReadyPost</b></span><span class="brand-divider" aria-hidden="true"></span><b class="brand-bloom">BLOOM <span>GLOW</span></b></span><button class="btn cx-open" type="button">Connect</button></header>
+
+<section class="hero">
+<div class="hero-copy">
+<span class="dm-tag">新加：按人群切换，和邮件的三个版本一一对应</span>
+<div class="dm-who" role="tablist" aria-label="Which describes you">
+<button class="on" data-k="b">I post a lot, sales are low</button><button data-k="a">I'm just starting</button><button data-k="c">I already earn</button></div>
+<p class="eyebrow" id="dm-eb">For TikTok Shop creators who post every week</p>
+<h1 class="value-headline"><span class="value-service" id="dm-h">You already post.<br>We make the videos that sell.</span><span class="value-payoff">You <em>earn.</em></span></h1>
+<p class="dm-sub" id="dm-s">Posting shoppable videos every week and still under $100 a month? Keep your account and your time. We pick products that are selling now and make the videos for you.</p>
+<span class="dm-tag" id="apply">改（接入 API 后）：主按钮直接是“连接 TikTok Shop”，点了在本页走完授权</span>
+<div class="cx-cta"><button class="btn cx-open" type="button">Connect TikTok Shop</button><span class="cx-cta-note">About 1 minute · Use the phone where you're logged in to TikTok</span></div>
+<div class="cx-live" id="cx-live" hidden><span class="cx-dot"></span><b>Connected</b><span id="cx-live-h">@yourhandle</span> · US market<a href="#manage" onclick="document.getElementById('manage').scrollIntoView({behavior:'smooth'});return false">Manage</a></div>
+<p class="dm-line"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><rect x="4" y="9" width="12" height="8" rx="2" fill="#997BB9"/><path d="M7 9V7a3 3 0 016 0v2" fill="none" stroke="#997BB9" stroke-width="2"/></svg><span>No password. You authorize on TikTok's own page. Connecting doesn't post a video or move any money.</span></p>
+</div>
+<div class="motion-stage" aria-label="English and Spanish shoppable video examples">
+<div class="motion-column">
+<figure class="motion-tile"><img src="assets/studio-poster-02.jpg" alt="Creator presenting a family-size stockpot"><figcaption class="motion-tag">Kitchen &amp; home</figcaption></figure>
+<figure class="motion-tile"><img src="assets/studio-poster-03.jpg" alt="A steamer basket demonstrated in a Mexican tiled kitchen"><figcaption class="motion-tag">Español</figcaption></figure>
+</div>
+<div class="motion-column">
+<figure class="motion-tile"><img src="assets/studio-poster-04.jpg" alt="Creator enjoying a meal cooked in a compact electric cooker"><figcaption class="motion-tag">Everyday products</figcaption></figure>
+<figure class="motion-tile"><img src="assets/sample-01.jpg" alt="Creator showing a stockpot in a home kitchen"><figcaption class="motion-tag">English</figcaption></figure>
+</div>
+</div>
+</section>
+
+<section class="dm-agree" aria-labelledby="agree-h">
+<span class="dm-tag">改：按 API 方案里的三项真实权限写；两张手机位放 TikTok 官方页面的真实截图</span>
+<h2 id="agree-h">What you're actually agreeing to</h2>
+<p class="dm-agree-sub">One authorization, on TikTok Shop's own page. Here is exactly what it lets us do, and what it never does.</p>
+<div class="dm-agree-grid">
+  <div class="dm-phone"><div class="dm-phone-screen dm-ph"><b>缺素材 · 手机截图 ①</b>TikTok Shop 官方授权页原图：看得到“BLOOM GLOW is requesting access”、权限勾选项、Authorize 按钮。</div><p class="dm-cap">You tap Authorize on TikTok</p></div>
+  <div class="dm-lists">
+    <div class="dm-list"><h3>We can</h3><ul>
+      <li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>See your creator profile (username, market)</span></li>
+      <li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Add products to your showcase and post shoppable videos</span></li>
+      <li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Read the orders, commission and video stats those videos bring</span></li></ul></div>
+    <div class="dm-list no"><h3>We can't</h3><ul>
+      <li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#f6ecec"/><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="#a04545" stroke-width="2" stroke-linecap="round"/></svg><span>See your password or your messages</span></li>
+      <li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#f6ecec"/><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="#a04545" stroke-width="2" stroke-linecap="round"/></svg><span>Move or withdraw money. TikTok pays you directly</span></li>
+      <li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#f6ecec"/><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="#a04545" stroke-width="2" stroke-linecap="round"/></svg><span>See your buyers' addresses</span></li>
+      <li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#f6ecec"/><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="#a04545" stroke-width="2" stroke-linecap="round"/></svg><span>Stop you from disconnecting</span></li></ul></div>
+  </div>
+  <div class="dm-phone"><div class="dm-phone-screen dm-ph"><b>缺素材 · 手机截图 ②</b>TikTok Shop 授权设置里“撤销 BLOOM GLOW”那一屏原图，让达人看到退出按钮真的在那。</div><p class="dm-cap">Any time · You revoke in TikTok</p></div>
+</div>
+<div class="dm-facts">
+  <div><b>Paid by TikTok</b><span>Commission lands in your TikTok Shop balance. We never hold your money.</span></div>
+  <div><b>A registered company</b><span>BLOOM GLOW INC. <a href="https://readypost.dexfu.cn/readypost/bloom-glow/about">Company details</a></span></div>
+  <div class="dm-human"><span class="dm-ava dm-ph">缺：真人头像</span><span><b>A real person replies</b><span>缺：对接人的名字和一句话，例如 “Hi, I'm ___. I answer every creator myself.”</span></span></div>
+</div>
+</section>
+<h2 id="results-heading">Our videos are already selling.</h2>
+<span class="dm-tag">改：标题从“Creators are already earning”改成说我们的片在出单；三张卡不动</span>
+
+<div class="creator-flow" id="samples" aria-label="Creator results and English and Spanish video samples"><div class="flow-track">
+<figure class="sample result-card">
+<video class="flow-video" muted playsinline preload="metadata" poster="assets/sample-02.jpg" aria-label="A family stockpot video with creator commission"><source src="assets/creator-result-02.mp4" type="video/mp4"></video>
+<figcaption><div class="analytics-panel" role="group" aria-label="GMV and commission"><dl class="analytics-fields"><div class="analytics-field"><dt>GMV</dt><dd>$1.1K</dd></div><div class="analytics-field"><dt>Commission</dt><dd>$101</dd></div></dl></div></figcaption>
+</figure>
+<figure class="sample result-card">
+<video class="flow-video" muted playsinline preload="metadata" poster="assets/sample-01.jpg" aria-label="A stockpot demonstration with creator commission"><source src="assets/creator-result-01.mp4" type="video/mp4"></video>
+<figcaption><div class="analytics-panel" role="group" aria-label="GMV and commission"><dl class="analytics-fields"><div class="analytics-field"><dt>GMV</dt><dd>$4.2K</dd></div><div class="analytics-field"><dt>Commission</dt><dd>$260</dd></div></dl></div></figcaption>
+</figure>
+<figure class="sample result-card">
+<video class="flow-video" muted playsinline preload="metadata" poster="assets/sample-03.jpg" aria-label="A cooking video with creator commission"><source src="assets/creator-result-03.mp4" type="video/mp4"></video>
+<figcaption><div class="analytics-panel" role="group" aria-label="GMV and commission"><dl class="analytics-fields"><div class="analytics-field"><dt>GMV</dt><dd>$435</dd></div><div class="analytics-field"><dt>Commission</dt><dd>$23</dd></div></dl></div></figcaption>
+</figure>
+<figure class="sample showcase-card"><video class="flow-video" muted playsinline preload="metadata" poster="assets/studio-poster-03.jpg" aria-label="Steamer basket video sample in Spanish"><source src="assets/studio-reel-03.mp4" type="video/mp4"></video><figcaption><span class="sample-language">Español</span><span class="sample-type">Video sample</span></figcaption></figure>
+<figure class="sample showcase-card"><video class="flow-video" muted playsinline preload="metadata" poster="assets/studio-poster-01.jpg" aria-label="Family stockpot video sample"><source src="assets/studio-reel-01.mp4" type="video/mp4"></video><figcaption><span class="sample-language">English</span><span class="sample-type">Video sample</span></figcaption></figure>
+<figure class="sample showcase-card"><video class="flow-video" muted playsinline preload="metadata" poster="assets/studio-poster-04.jpg" aria-label="Compact electric cooker video sample"><source src="assets/studio-reel-04.mp4" type="video/mp4"></video><figcaption><span class="sample-language">English</span><span class="sample-type">Video sample</span></figcaption></figure>
+<figure class="sample showcase-card"><video class="flow-video" muted playsinline preload="metadata" poster="assets/studio-poster-02.jpg" aria-label="Large stockpot video sample"><source src="assets/studio-reel-02.mp4" type="video/mp4"></video><figcaption><span class="sample-language">English</span><span class="sample-type">Video sample</span></figcaption></figure>
+</div></div>
+<h2>From a creator like you</h2>
+<span class="dm-tag">新加：一位真实合作达人的故事（现在没有，整块先空着）</span>
+<div class="dm-story">
+<div class="dm-ph"><b>缺素材 · 达人自述视频</b>一位合作达人对着镜头讲 30 秒：之前发了多少条、挣多少，合作后怎样。竖屏，带英文字幕。</div>
+<div class="dm-ph"><b>缺素材 · 后台佣金截图</b>这位达人 TikTok 后台的佣金页原图：合作前一个月、合作后一个月各一张，账号名可见（要本人同意）。</div>
+<div class="dm-ph"><b>缺素材 · 一句原话</b>达人头像、账号名、粉丝数，加一句他自己的话，例如为什么愿意授权、最担心什么、后来怎样。</div>
+</div>
+<h2 id="how">How it works</h2>
+<span class="dm-tag">改：按 API 方案的真实四步写；下面四个手机屏就是达人依次看到的画面（点任意一屏可以真的走一遍）</span>
+<div class="cx-board">
+  <button class="cx-shot cx-open" type="button" data-go="1"><span class="cx-n">1</span><span class="cx-mini"><i class="cx-m-t">Before you connect</i><i class="cx-m-r"></i><i class="cx-m-r"></i><i class="cx-m-r"></i><i class="cx-m-b">Continue</i></span><b>Open the link on your phone</b><small>A quick self-check: US account, Shop access on.</small></button>
+  <button class="cx-shot cx-open" type="button" data-go="2"><span class="cx-n">2</span><span class="cx-mini"><i class="cx-m-t">What we can do</i><i class="cx-m-r"></i><i class="cx-m-r"></i><i class="cx-m-c"></i><i class="cx-m-b">Connect</i></span><b>Tick one box, tap Connect</b><small>You see every permission in plain words first.</small></button>
+  <button class="cx-shot cx-open" type="button" data-go="3"><span class="cx-n">3</span><span class="cx-mini tt"><i class="cx-m-t">Authorization</i><i class="cx-m-r"></i><i class="cx-m-r"></i><i class="cx-m-r"></i><i class="cx-m-b">Authorize</i></span><b>Tap Authorize on TikTok</b><small>TikTok's own page. Select all, then Authorize.</small></button>
+  <button class="cx-shot cx-open" type="button" data-go="4"><span class="cx-n">4</span><span class="cx-mini"><i class="cx-m-ok">Connected</i><i class="cx-m-r"></i><i class="cx-m-r"></i></span><b>Done. We make and post.</b><small>Nothing for you to film, edit or schedule.</small></button>
+</div>
+<h2>How the partnership works</h2>
+<span class="dm-tag">改：右栏“保留已发的视频”换成“号是你的，随时能移除我们”</span>
+<div class="two">
+<div class="card"><h3>What we do</h3><ul>
+<li>We choose products shoppers want</li>
+<li>We make, publish and promote the videos</li>
+<li>You earn your share of every sale</li>
+<li>Human support when you need it</li></ul></div>
+<div class="card"><h3>What you do</h3><ul>
+<li>A US TikTok account with Shop access</li>
+<li>Authorize our official TikTok connection</li>
+<li>Your account stays yours. Remove us any time</li>
+<li>No filming or posting work for you</li></ul></div>
+</div>
+
+<section id="manage" class="cx-manage">
+<span class="dm-tag">新加（接入 API 后）：连接后回到这页看得到状态、能自己断开。三种状态可点下面按钮预览</span>
+<h2>Your connection</h2>
+<div class="cx-demo-sw" data-sw="status"><em>演示：切换状态</em><button class="on" data-v="ok">已连接</button><button data-v="reauth">需要重新授权</button><button data-v="off">已断开</button></div>
+<div class="cx-status" id="cx-status">
+  <div class="cx-status-top"><span class="cx-chip ok" id="cx-chip">Connected</span><b id="cx-who">@yourhandle · US market</b></div>
+  <p id="cx-status-msg">We post shoppable videos for you and check your results once a day. Your commission is paid by TikTok to your own TikTok Shop balance.</p>
+  <ul class="cx-kv"><li><span>Connected since</span><b>Nov 24, 2026 <i class="cx-sample">示例数据</i></b></li><li><span>Videos posted for you</span><b>12 <i class="cx-sample">示例数据</i></b></li><li><span>Last result check</span><b>Today, 9:00 AM <i class="cx-sample">示例数据</i></b></li></ul>
+  <div class="cx-status-act" id="cx-status-act"><details class="cx-disc"><summary>Disconnect &amp; delete</summary><label><input type="checkbox" id="cx-disc-ck"> I understand: BLOOM GLOW deletes my authorization and data and stops posting. Videos already on my account stay unless I delete them.</label><button class="cx-btn-ghost" id="cx-disc-btn" type="button" disabled>Disconnect now</button></details></div>
+</div>
+</section>
+<h2>Questions creators ask</h2>
+<span class="dm-tag">改：按 API 方案第六节补齐达人最常问的五问</span>
+<div class="faq">
+<details open><summary>What if I want to stop?</summary><p>Open this page and tap Disconnect, or revoke BLOOM GLOW in your TikTok Shop authorization settings. After that we can't do anything on your account.</p></details>
+<details><summary>Can you move my money?</summary><p>No. The authorization has no transfer or withdrawal permission. TikTok settles commission straight to your account.</p></details>
+<details><summary>Can I delete a video you posted?</summary><p>Yes. Delete it in TikTok like any video of your own.</p></details>
+<details><summary>Will this affect my own posts?</summary><p>No. Keep posting as usual. TikTok limits shoppable videos per day (3 a day under 5,000 followers, 30 a day after), and we stay inside that limit.</p></details>
+<details><summary>How long does the authorization last?</summary><p>Until you disconnect or revoke it, or TikTok's authorization expires. We remind you before it expires.</p></details>
+<details><summary>Is this free?</summary><p>Yes. You never pay us anything. We earn only our share of the commission when a product sells.</p></details>
+<details><summary>Do you need my password or login?</summary><p>No. You authorize on TikTok Shop's own page. The permission list doesn't include your password, your messages or your buyers' addresses.</p></details>
+<details><summary>Do I need to make or post videos?</summary><p>No. After you authorize access, we handle product selection, video creation, publishing and promotion.</p></details>
+<details><summary>Are the videos AI-made?</summary><p>Partly. We use AI tools and real product footage, and every video carries TikTok's AI-content label where required.</p></details>
+<details><summary>How do I get paid?</summary><p>By TikTok Shop, like any affiliate sale. Your commission is settled straight to your own TikTok Shop balance.</p></details>
+</div>
+
+<div class="cta" id="apply"><h2>Ready to earn?</h2><p>Send us your TikTok handle to get started.</p>
+<button class="btn cx-open" type="button">Connect TikTok Shop</button>
+<p class="contact-email"><a href="mailto:studioreadypost@gmail.com">studioreadypost@gmail.com</a></p>
+</div>
+
+<footer>BLOOM GLOW · Operated by BLOOM GLOW INC · <a href="https://readypost.dexfu.cn/readypost/bloom-glow/about">Company &amp; developer info</a> · <a href="https://readypost.dexfu.cn/readypost/bloom-glow/privacy">Privacy</a></footer>
+</div><script>
+(()=>{
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+ const flow=document.querySelector('.creator-flow');
+ const track=flow.querySelector('.flow-track');
+ const originals=[...track.children];
+ originals.forEach(card=>{const clone=card.cloneNode(true);clone.setAttribute('aria-hidden','true');clone.setAttribute('inert','');track.append(clone);});
+ function sizeFlow(){const width=flow.clientWidth;const card=width>700?(width-40)/3:width*.86;flow.style.setProperty('--card-width',card+'px');flow.style.setProperty('--flow-distance',((card+20)*originals.length)+'px');flow.style.setProperty('--card-step',(card+20)+'px');}
+ sizeFlow();new ResizeObserver(sizeFlow).observe(flow);
+ const cards=[...track.children];
+ const videos=[...flow.querySelectorAll('.flow-video')];
+ const visible=new Set();const states=new WeakMap();
+ const palette=['#997bb9','#d4c4e3','#ffffff','#bca0db','#eee7f5'];
+ cards.forEach(card=>{
+  states.set(card,{shown:false,cycle:0,lastTime:0});
+  if(!card.classList.contains('result-card'))return;
+  const confetti=document.createElement('div');confetti.className='earnings-confetti';confetti.setAttribute('aria-hidden','true');
+  for(let i=0;i<30;i++){const piece=document.createElement('i');piece.className='confetti-piece'+(i%5===0?' ribbon':'');piece.style.cssText=`--x:${(i*37+9)%100}%;--w:${5+i%4}px;--h:${9+i%7}px;--color:${palette[i%palette.length]};--delay:${(i%8)*.09}s;--drift:${(i%2?1:-1)*(22+i*3)}px;--spin:${(i%2?1:-1)*(200+i*27)}deg`;confetti.append(piece);}
+  card.append(confetti);
+  card.querySelectorAll('dd').forEach(dd=>{dd.dataset.final=dd.textContent;dd.setAttribute('aria-label',dd.textContent);const number=document.createElement('span');number.className='money-number';number.setAttribute('aria-hidden','true');number.textContent=dd.textContent;dd.replaceChildren(number);});
+  if(reduce.matches)card.classList.add('earnings-visible');
+ });
+ function reset(card){const state=states.get(card);state.shown=false;state.cycle++;state.lastTime=0;card.classList.remove('celebrate','earnings-visible');card.querySelectorAll('dd').forEach(dd=>{dd.firstElementChild.textContent=dd.dataset.final;});}
+ function celebrate(card){
+  const state=states.get(card);if(state.shown)return;state.shown=true;
+  card.classList.add('earnings-visible');if(reduce.matches)return;card.classList.add('celebrate');
+  const cycle=state.cycle;
+  card.querySelectorAll('dd').forEach(dd=>{const final=dd.dataset.final;const compact=final.endsWith('K');const target=parseFloat(final.replace(/[$K,]/g,''));const number=dd.firstElementChild;let began;
+   const frame=time=>{if(state.cycle!==cycle||reduce.matches){number.textContent=final;return;}if(!began)began=time;const progress=Math.min((time-began)/1300,1);const value=target*(1-Math.pow(1-progress,3));number.textContent=progress===1?final:'$'+(compact?value.toFixed(1)+'K':Math.floor(value));if(progress<1)requestAnimationFrame(frame);};requestAnimationFrame(frame);
+  });
+ }
+ videos.forEach(video=>{
+  const card=video.closest('.sample');
+  video.addEventListener('timeupdate',()=>{const state=states.get(card);if(video.currentTime<state.lastTime-.5)reset(card);state.lastTime=video.currentTime;
+   if(video.currentTime>=3&&card.classList.contains('result-card'))celebrate(card);
+   if(video.currentTime>=10){reset(card);video.currentTime=0;}
+  });
+  video.addEventListener('ended',()=>{reset(card);video.currentTime=0;if(visible.has(video)&&!document.hidden&&!reduce.matches)video.play().catch(()=>{});});
+  video.addEventListener('error',()=>{if(card.classList.contains('result-card'))card.classList.add('earnings-visible');});
+ });
+ function sync(){videos.forEach(video=>{if(visible.has(video)&&!document.hidden&&!reduce.matches)video.play().catch(()=>{});else video.pause();});}
+ if('IntersectionObserver' in window){
+  const videoObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{const video=entry.target;const card=video.closest('.sample');if(entry.isIntersecting){visible.add(video);}else{visible.delete(video);video.pause();if(!reduce.matches){reset(card);if(video.readyState)video.currentTime=0;}}});sync();},{threshold:.2});videos.forEach(video=>videoObserver.observe(video));
+  const flowObserver=new IntersectionObserver(entries=>entries.forEach(entry=>flow.classList.toggle('in-view',entry.isIntersecting)),{threshold:.1});flowObserver.observe(flow);
+  if(!reduce.matches)document.body.classList.add('js-motion');
+  const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');reveal.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>reveal.observe(el));
+ }
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)flow.classList.remove('in-view');else if(visible.size)flow.classList.add('in-view');sync();});
+ reduce.addEventListener('change',()=>{cards.forEach(card=>{reset(card);if(reduce.matches)card.classList.add('earnings-visible');});if(reduce.matches)document.body.classList.remove('js-motion');sync();});
+})();
+</script>
+<script>(function(){var c={b:["For TikTok Shop creators who post every week","You already post.<br>We make the videos that sell.","Posting shoppable videos every week and still under $100 a month? Keep your account and your time. We pick products that are selling now and make the videos for you."],a:["For new TikTok Shop creators","No samples. No filming.<br>Start with videos that sell.","Just unlocked TikTok Shop and not sure what to post? We pick the products and make your first videos, so you can start without buying samples or gear."],c:["For creators who already sell on TikTok Shop","Keep doing your thing.<br>We add a second income line.","Already earning from your own videos? We add extra shoppable posts on products you don't cover. It takes none of your time."]};document.querySelectorAll('.dm-who button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.dm-who button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');var v=c[b.dataset.k];document.getElementById('dm-eb').textContent=v[0];document.getElementById('dm-h').innerHTML=v[1];document.getElementById('dm-s').textContent=v[2];}})})();</script><script>(function(){/* ?v=1/2/3 选首屏版本：1 = I post a lot（默认）, 2 = I'm just starting, 3 = I already earn；点按钮时地址同步 */
+var m={"1":"b","2":"a","3":"c"},r={b:"1",a:"2",c:"3"},q=new URLSearchParams(location.search),v=q.get("v");
+if(q.get("clean"))document.body.classList.add("clean");
+var bs=document.querySelectorAll('.dm-who button');
+if(v&&m[v]){var t=document.querySelector('.dm-who button[data-k="'+m[v]+'"]');if(t)t.click();}
+bs.forEach(function(b){b.addEventListener('click',function(){var u=new URL(location.href);u.searchParams.set('v',r[b.dataset.k]);history.replaceState(null,'',u)})});
+})();</script><div class="cx-ov" id="cx-ov" hidden>
+<div class="cx-sheet" role="dialog" aria-modal="true" aria-label="Connect TikTok Shop">
+<div class="cx-bar"><span class="cx-steps" id="cx-steps"></span><button class="cx-x" type="button" aria-label="Close">✕</button></div>
+
+<div class="cx-pane" data-p="1">
+<span class="dm-tag">第 1 屏 · 授权前先自查，别让他跳到 TikTok 才失败</span>
+<h3>Before you connect</h3>
+<p class="cx-p">Takes about a minute. Check these three first:</p>
+<ul class="cx-check"><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>US TikTok account</b> with TikTok Shop for Creator turned on</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>1,000+ followers</b></span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You're on <b>the phone where TikTok is logged in</b></span></li></ul>
+<label class="cx-field">Your TikTok handle<input id="cx-handle" placeholder="@yourhandle" autocomplete="off"></label>
+<button class="btn cx-next" type="button">Continue</button>
+<p class="cx-note"><span class="dm-tag" style="margin:0 6px 0 0">待工程确认</span>授权前能不能自动查出“是不是美区带货号”；查不了就保留这三条让达人自查，真正校验放在授权之后。</p>
+</div>
+
+<div class="cx-pane" data-p="2">
+<span class="dm-tag">第 2 屏 · 三项权限翻成人话，勾一个框</span>
+<h3>What you're allowing</h3>
+<ul class="cx-perm"><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Your creator profile</b>Username and market, so we know it's you.</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Post shoppable videos</b>Add products to your showcase and publish videos we make.</span></li><li><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e9f5ec"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="#2f7d4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Orders and commission</b>Read the results of those videos. Read only.</span></li></ul>
+<p class="cx-never"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#f6ecec"/><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="#a04545" stroke-width="2" stroke-linecap="round"/></svg><span>Never: your password, your messages, your payouts.</span></p>
+<label class="cx-consent"><input type="checkbox" id="cx-agree"><span>I am 18 or older, have read the <a href="https://readypost.dexfu.cn/readypost/bloom-glow/privacy">data notice</a>, and want to continue to TikTok Shop to choose permissions.</span></label>
+<button class="btn cx-next" id="cx-connect" type="button" disabled>Connect TikTok Shop</button>
+<p class="cx-tip">On the next screen, tap <b>Select all options</b>, then <b>Authorize</b>. Connecting does not publish a video.</p>
+</div>
+
+<div class="cx-pane tt" data-p="3">
+<span class="dm-tag">第 3 屏 · 这是 TikTok 官方页面，不是我们的；这里只是示意，实际以 TikTok 为准</span>
+<div class="cx-tt">
+<div class="cx-tt-h"><span>✕</span><b>Authorization</b><span></span></div>
+<p class="cx-tt-sub">TikTok Shop Open Platform</p>
+<div class="cx-tt-logos"><span>BLOOM GLOW</span><i>⇄</i><span class="k">TikTok Shop</span></div>
+<p class="cx-tt-req">BLOOM GLOW is requesting access to your account to get the following data via API</p>
+<label><input type="checkbox" id="cx-all"> Select all options</label>
+<label><input type="checkbox" class="cx-sc"> User Info</label>
+<label><input type="checkbox" class="cx-sc"> Affiliate collaboration</label>
+<label><input type="checkbox" class="cx-sc"> Content posting</label>
+<label class="cx-tt-agree"><input type="checkbox" id="cx-tt-ok"> I agree that my data will be shared with BLOOM GLOW</label>
+<div class="cx-tt-btns"><button type="button" id="cx-reject">Reject</button><button type="button" id="cx-auth" class="p">Authorize</button></div>
+</div>
+</div>
+
+<div class="cx-pane" data-p="4">
+<span class="dm-tag">第 4 屏 · 回到我们页面。成功和六种失败各长什么样，点下面按钮预览</span>
+<div class="cx-demo-sw" data-sw="result"><em>演示：切换结果</em><button class="on" data-v="ok">成功</button><button data-v="region">平台未放行</button><button data-v="notus">不是美区号</button><button data-v="cancel">点了拒绝</button><button data-v="expired">链接过期</button><button data-v="missing">没勾全</button><button data-v="off">暂未开放</button></div>
+<div id="cx-result"></div>
+</div>
+</div></div>
+<script>(function(){
+var ov=document.getElementById('cx-ov'),cur=1,handle='@yourhandle';
+function $(q){return document.querySelector(q)}function $$(q){return [].slice.call(document.querySelectorAll(q))}
+function go(n){cur=n;$$('.cx-pane').forEach(function(p){p.classList.toggle('on',+p.dataset.p===n)});$('#cx-steps').innerHTML=[1,2,3,4].map(function(i){return '<i class="'+(i<=n?'on':'')+'"></i>'}).join('');$('.cx-sheet').scrollTop=0;if(n===4)res('ok')}
+function open(n){ov.hidden=false;document.body.style.overflow='hidden';go(n||1)}
+function close(){ov.hidden=true;document.body.style.overflow=''}
+$$('.cx-open').forEach(function(b){b.addEventListener('click',function(){open(+b.dataset.go||1)})});
+$('.cx-x').onclick=close;ov.addEventListener('click',function(e){if(e.target===ov)close()});
+$$('.cx-next').forEach(function(b){b.addEventListener('click',function(){if(cur===1){var v=$('#cx-handle').value.trim();if(v)handle=(v[0]==='@'?v:'@'+v)}go(cur+1)})});
+$('#cx-agree').onchange=function(){$('#cx-connect').disabled=!this.checked};
+var sc=$$('.cx-sc'),all=$('#cx-all'),tok=$('#cx-tt-ok'),au=$('#cx-auth');
+all.onchange=function(){sc.forEach(function(c){c.checked=all.checked})};
+au.onclick=function(){if(!tok.checked){tok.focus();return}go(4);res(sc.every(function(c){return c.checked})?'ok':'missing')};
+$('#cx-reject').onclick=function(){go(4);res('cancel')};
+var R={ok:['ok','Connected','You\'re connected','{h} · US market','<ul><li>We add products to your showcase and post shoppable videos on a schedule.</li><li>Every video is reviewed by our team and pre-checked by TikTok before it goes out.</li><li>Commission is paid by TikTok to your own balance.</li></ul>','Done','done'],
+region:['wait','Not open yet','Not available yet','This isn\'t a problem with your account. TikTok hasn\'t opened our app to creators in your group yet.','<p>We\'ll message you as soon as it opens. Then tap the link once more.</p>','OK, notify me','close'],
+notus:['bad','Can\'t connect','This account isn\'t a US TikTok Shop creator','We can only connect creator accounts with a US sales region.','<p>Switch to your US creator account, or turn on TikTok Shop for Creator first: TikTok Studio → Monetization.</p>','Try another account','restart'],
+cancel:['bad','Not connected','Authorization was cancelled','Nothing was connected and nothing changed on your account.','','Try again','restart'],
+expired:['bad','Link expired','This link expired or was already used','For your safety each authorization link works once, for 10 minutes.','','Start again','restart'],
+missing:['bad','One more step','Some permissions were left unticked','We need all three to post for you and read your results.','<p>Tap <b>Select all options</b> on the TikTok screen, then Authorize.</p>','Authorize again','back3'],
+off:['wait','Paused','Connecting is paused for now','We\'re not accepting new connections at the moment.','<p>We\'ll message you when it reopens.</p>','OK','close']};
+function res(k){var r=R[k];$$('[data-sw=result] button').forEach(function(b){b.classList.toggle('on',b.dataset.v===k)});
+$('#cx-result').innerHTML='<div class="cx-res '+r[0]+'"><span class="cx-chip '+r[0]+'">'+r[1]+'</span><h3>'+r[2]+'</h3><p>'+r[3].replace('{h}',handle)+'</p>'+r[4]+'<button class="'+(r[0]==='ok'?'btn':'cx-btn-ghost')+'" type="button" id="cx-fin">'+r[5]+'</button></div>';
+$('#cx-fin').onclick=function(){if(r[6]==='done'){close();var l=$('#cx-live');l.hidden=false;$('#cx-live-h').textContent=handle;$('#cx-who').textContent=handle+' · US market'}else if(r[6]==='restart'){go(2)}else if(r[6]==='back3'){go(3)}else close()}}
+$$('[data-sw=result] button').forEach(function(b){b.onclick=function(){res(b.dataset.v)}});
+var S={ok:['ok','Connected','We post shoppable videos for you and check your results once a day. Your commission is paid by TikTok to your own TikTok Shop balance.',''],
+reauth:['wait','Needs re-authorization','TikTok\'s authorization is about to expire. Posting pauses until you tap Authorize once more. It takes a few seconds.','<button class="btn cx-open2" type="button">Re-authorize on TikTok</button>'],
+off:['bad','Disconnected','We\'ve deleted your authorization and data and stopped posting. Videos already on your account stay unless you delete them.','<button class="btn cx-open2" type="button">Connect again</button>']};
+var discHTML=$('#cx-status-act').innerHTML;
+function st(k){var v=S[k];$$('[data-sw=status] button').forEach(function(b){b.classList.toggle('on',b.dataset.v===k)});var c=$('#cx-chip');c.className='cx-chip '+v[0];c.textContent=v[1];$('#cx-status-msg').textContent=v[2];$('#cx-status-act').innerHTML=k==='ok'?discHTML:v[3];
+var o=$('.cx-open2');if(o)o.onclick=function(){open(k==='reauth'?3:1)};bindDisc()}
+function bindDisc(){var ck=$('#cx-disc-ck'),bt=$('#cx-disc-btn');if(!ck)return;ck.onchange=function(){bt.disabled=!ck.checked};bt.onclick=function(){st('off');$('#cx-live').hidden=true}}
+$$('[data-sw=status] button').forEach(function(b){b.onclick=function(){st(b.dataset.v)}});bindDisc();
+})();</script></body></html>

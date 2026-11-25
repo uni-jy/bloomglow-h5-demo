@@ -7,3 +7,12 @@
 - 中文版：`zh.html`（内部演示用，由 `make_zh.py` 从英文版生成；改英文版后重新运行）
 
 页面中的账号、商品、金额均为示意数据；TikTok 授权页按官方开发文档截图示意，以实际页面为准。
+
+## 官网手机版（改版稿预览）
+
+`site/` 是公司仓库 `creator-site/改版稿-20261124.html` 的预览副本（去掉了 base，素材用 `site/assets/`）。
+
+- https://uni-jy.github.io/bloomglow-h5-demo/site/?v=1 （`?v=1/2/3` 三个首屏版本）
+- 加 `&clean=1` 去掉黄色改动标签，看上线后的样子
+
+改原稿后重新复制：把公司仓库里的改版稿复制为 `site/index.html`，再把开头的 `<base …>` 换成 noindex。
