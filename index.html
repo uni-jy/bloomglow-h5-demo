@@ -40,8 +40,12 @@ button{font:inherit;cursor:pointer}
 
 /* ---------- shared screen parts ---------- */
 .bar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 14px;border-bottom:1px solid var(--line);background:var(--paper)}
-.brand{display:flex;align-items:center;gap:9px;font-weight:650;font-size:16px;letter-spacing:-.2px;text-decoration:none}
-.brand svg{width:30px;height:30px;border-radius:8px}
+.brand{display:flex;align-items:center;gap:9px;font-size:15px;letter-spacing:-.2px;text-decoration:none;white-space:nowrap}
+.brand svg{width:26px;height:26px;border-radius:6px}
+.brand-ready{display:inline-flex;align-items:center;gap:6px}
+.brand-divider{width:1px;height:18px;background:var(--line)}
+.brand b{font-weight:650}
+.brand-bloom span{font-weight:400;color:var(--muted)}
 .bar .link{font-size:12px;color:var(--muted);text-decoration:none}
 .back{font-size:13px;color:var(--plum);text-decoration:none}
 .pad{padding:22px 20px 40px}
@@ -218,11 +222,23 @@ body.single .phone{width:100%;height:100vh;border-radius:0;box-shadow:none}
   .status,.homebar{display:none}
   .scroll{overflow:visible}
 }
+
+/* step spec cards (screens 2/3/4/10) */
+.spec{width:390px;margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;font-size:12.5px;line-height:1.55}
+.spec h4{margin:0 0 8px;font-size:13px}
+.spec dl{grid-template-columns:62px 1fr;gap:6px 10px;font-size:12.5px}
+.spec dt{color:var(--plum);font-weight:600}
+.spec ul{margin:4px 0 0;padding-left:16px}
+.spec li{margin-bottom:3px}
+.spec .go{display:inline-block;background:var(--mist);color:var(--plum-dark);border-radius:6px;padding:0 6px;font-weight:600;text-decoration:none}
+body.export .spec{display:none}
+@media (max-width:520px){.spec{width:auto;margin:16px 20px 0}}
 /* click-through mode on a computer: keep the phone size, centered */
 @media (min-width:521px){
   body.single{background:#e9e5ef;min-height:100vh}
   body.single .gallery{display:flex;justify-content:center;padding:28px 20px 48px}
   body.single .shot.show{width:390px}
+  body.single .gallery{align-items:flex-start}
   body.single .cap{display:block;text-align:center;margin-bottom:18px}
   body.single .phone{width:390px;height:844px;border-radius:46px;box-shadow:0 0 0 10px #1d1a24,0 24px 60px rgba(37,32,49,.28)}
   .single-nav{display:flex;justify-content:center;gap:18px;margin-top:22px;font-size:13px}
@@ -248,7 +264,7 @@ body.export .scroll{overflow:hidden}
 
 <header class="gallery-head">
   <h1>BLOOM GLOW 达人端 H5 demo</h1>
-  <p>按达人从"收到链接"到"日常查看"的顺序排列，共 10 屏。视觉沿用官网的配色与字体；数据、账号、商品均为示意。点击按钮可在屏幕间跳转。</p>
+  <p>按达人从"收到链接"到"日常查看"的顺序排列，共 10 屏。视觉沿用官网的配色与字体；数据、账号、商品均为示意。点击按钮可在屏幕间跳转。第 2、3、4、10 屏下方写明了达人看到什么、点哪里、去哪一屏，以及每种失败怎么办。</p>
   <p class="try"><a href="?screen=s1">在手机上逐屏点击体验</a>（像真实页面一样一屏一屏走完流程） · 语言：<b>English</b> / <a href="zh.html">中文</a></p>
 </header>
 
@@ -258,7 +274,7 @@ body.export .scroll{overflow:hidden}
 <section class="shot" id="s1">
 <p class="cap"><b>1 官网落地页</b>达人点开链接看到的第一屏：我们做什么、不做什么</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
-  <div class="bar"><a class="brand" href="#s1"><svg><use href="#mark"/></svg>BLOOM GLOW</a><a class="link" href="#s9">Privacy</a></div>
+  <div class="bar"><a class="brand" href="#s1"><span class="brand-ready"><svg><use href="#mark"/></svg><b>ReadyPost</b></span><span class="brand-divider" aria-hidden="true"></span><b class="brand-bloom">BLOOM <span>GLOW</span></b></a><a class="link" href="#s9">Privacy</a></div>
   <div class="pad">
     <div class="hero-mark"><span></span><span></span></div>
     <p class="kicker">For US TikTok Shop creators</p>
@@ -278,13 +294,13 @@ body.export .scroll{overflow:hidden}
       <div class="panel"><h4>We never</h4><ul><li>Move or withdraw money</li><li>See your password or DMs</li><li>See buyer addresses</li></ul></div>
     </div>
   </div>
-  <div class="foot">BLOOM GLOW · operated with ReadyPost<br>Terms · Privacy · Contact</div>
+  <div class="foot">ReadyPost × BLOOM GLOW<br>Terms · Privacy · Contact</div>
 </div><div class="homebar"></div></div>
 </section>
 
 <!-- 2 Check & consent -->
 <section class="shot" id="s2">
-<p class="cap"><b>2 资格自查与同意</b>跳转 TikTok 前先自查条件，避免授权后才失败</p>
+<p class="cap"><b>2 资格自查与同意</b>跳转 TikTok 前先自查条件（下方写明每一步）</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
   <div class="bar"><a class="back" href="#s1">‹ Back</a><span class="small">Step 1 of 2</span></div>
   <div class="pad">
@@ -300,8 +316,8 @@ body.export .scroll{overflow:hidden}
     <h3>What you'll approve on TikTok</h3>
     <div class="panel">
       <div class="perm"><div><em>Profile</em><span>Your handle and sales region</span></div></div>
-      <div class="perm"><div><em>Content posting</em><span>Upload and post shoppable videos, read video results</span></div></div>
-      <div class="perm"><div><em>Showcase</em><span>View and add products</span></div></div>
+      <div class="perm"><div><em>Content posting</em><span>Upload and post shoppable videos, add products to your showcase, read video results</span></div></div>
+      <div class="perm"><div><em>Showcase</em><span>View products in your showcase</span></div></div>
       <div class="perm"><div><em>Affiliate orders</em><span>Orders and commissions from your content</span></div></div>
     </div>
     <label class="consent"><span class="box">✓</span><span>I'm 18 or older, I've read the data notice, and I agree to the posting arrangement with BLOOM GLOW.</span></label>
@@ -309,11 +325,12 @@ body.export .scroll{overflow:hidden}
     <p class="small" style="margin-top:12px;text-align:center">Open this on the phone where you use TikTok.</p>
   </div>
 </div><div class="homebar"></div></div>
+<div class="spec"><h4>这一屏怎么走</h4><dl><dt>看到</dt><dd>五项资格自查（美区达人、1000+ 粉、18+ 并完成年龄验证、实名 + 收款账户、已签达人条款），以及在 TikTok 上要同意的 4 项权限。</dd><dt>点哪里</dt><dd>勾选同意框 → 点「Continue to TikTok」。左上「Back」回第 1 屏。</dd><dt>去哪一屏</dt><dd>跳到 TikTok 官方授权页 <a class="go" href="#s3">→ 第 3 屏</a></dd><dt>失败</dt><dd><ul><li>没勾同意框：按钮点不动 → 勾上再点。</li><li>我们的连接开关还关着：显示「Connection is temporarily disabled」，不会跳转 → 等我们通知。</li><li>页面放太久（表单过期）：提示「The form expired」→ 刷新页面，重新勾选再点一次。</li></ul></dd></dl></div>
 </section>
 
 <!-- 3 TikTok authorization (mock) -->
 <section class="shot" id="s3">
-<p class="cap"><b>3 TikTok 官方授权页</b>TikTok 官方页面，按开发文档截图示意</p>
+<p class="cap"><b>3 TikTok 官方授权页</b>TikTok 的页面，按开发文档截图示意（下方写明每一步）</p>
 <div class="phone"><div class="status" style="background:#fff">9:41<i>●●● ▮</i></div>
   <div class="tt">
     <div class="tt-top"><b>✕</b>Authorization</div>
@@ -325,7 +342,8 @@ body.export .scroll{overflow:hidden}
       <div class="tt-opt"><i>✓</i><div><b>Select all options</b></div></div>
       <div class="tt-opt"><i>✓</i><div><b>User Info</b><span>Creator ID, profile, handle, region</span></div></div>
       <div class="tt-opt"><i>✓</i><div><b>Content Posting</b><span>Upload and post shoppable videos, video metrics</span></div></div>
-      <div class="tt-opt"><i>✓</i><div><b>Showcase Products</b><span>Read and manage products in your showcase</span></div></div>
+      <div class="tt-opt"><i>✓</i><div><b>Showcase Products</b><span>Read products in your showcase</span></div></div>
+      <div class="tt-opt"><i>✓</i><div><b>Affiliate Orders</b><span>Orders and commissions from your content</span></div></div>
     </div>
     <div class="tt-foot">
       <div class="tt-agree"><i></i>I agree that my data, as described above, will be…</div>
@@ -333,13 +351,14 @@ body.export .scroll{overflow:hidden}
     </div>
   </div>
 <div class="homebar"></div></div>
+<div class="spec"><h4>这一屏怎么走</h4><dl><dt>看到</dt><dd>TikTok 的官方页面（不是我们的页面）：BLOOM GLOW 申请 4 项权限的列表、同意条款、「Reject / Authorize」两个按钮。</dd><dt>点哪里</dt><dd>点「Select all options」勾全 4 项 → 勾同意条款 → 点「Authorize」。没登录 TikTok 会先要求登录。</dd><dt>去哪一屏</dt><dd>点 Authorize → 跳回我们的页面 <a class="go" href="#s4">→ 第 4 屏</a>；点 Reject 或关掉 → <a class="go" href="#s10">→ 第 10 屏</a></dd><dt>失败</dt><dd><ul><li>页面提示「Not available in your region」：我们的应用还没对真实达人开放 → 等我们通知后再点同一个链接（第 10 屏）。</li><li>点了 Reject 或关掉页面：没有授权 → 重新打开链接，从第 2 屏开始。</li><li>没勾全权限：连接会被判为缺权限 → 重新授权时点「Select all options」。</li></ul></dd></dl></div>
 </section>
 
 <!-- 4 Connected -->
 <section class="shot" id="s4">
-<p class="cap"><b>4 连接成功</b>回到我们的页面；首次授权到此结束</p>
+<p class="cap"><b>4 连接成功</b>首次授权到此结束（下方写明每一步）</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
-  <div class="bar"><a class="brand" href="#s1"><svg><use href="#mark"/></svg>BLOOM GLOW</a><span class="small">Step 2 of 2</span></div>
+  <div class="bar"><a class="brand" href="#s1"><span class="brand-ready"><svg><use href="#mark"/></svg><b>ReadyPost</b></span><span class="brand-divider" aria-hidden="true"></span><b class="brand-bloom">BLOOM <span>GLOW</span></b></a><span class="small">Step 2 of 2</span></div>
   <div class="pad">
     <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="#357c65" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
     <h2 class="title">You're connected</h2>
@@ -354,13 +373,14 @@ body.export .scroll{overflow:hidden}
     <a class="btn" href="#s5" style="margin-top:8px">Open my workspace</a>
   </div>
 </div><div class="homebar"></div></div>
+<div class="spec"><h4>这一屏怎么走</h4><dl><dt>看到</dt><dd>「You're connected」、自己的用户名和「US market · 4 permissions granted」、接下来会发生的三件事。</dd><dt>点哪里</dt><dd>点「Open my workspace」。也可以直接关掉页面，授权已经保存。</dd><dt>去哪一屏</dt><dd><a class="go" href="#s5">→ 第 5 屏 工作台</a></dd><dt>失败</dt><dd><ul><li>账号销售地区不是美国：不会显示这一屏，跳到第 10 屏「Use a US TikTok Shop creator」→ 换美区达人账号。</li><li>身份核对不一致：第 10 屏提示 → 用同一个 TikTok 账号重新授权。</li><li>已经连过一个号又想换号：先在第 9 屏断开，再重新连接。</li></ul></dd></dl></div>
 </section>
 
 <!-- 5 Workspace -->
 <section class="shot" id="s5">
 <p class="cap"><b>5 达人工作台</b>日常唯一需要看的页面：状态、今日额度、下一条</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
-  <div class="bar"><a class="brand" href="#s1"><svg><use href="#mark"/></svg>BLOOM GLOW</a><span class="chip ok">Connected</span></div>
+  <div class="bar"><a class="brand" href="#s1"><span class="brand-ready"><svg><use href="#mark"/></svg><b>ReadyPost</b></span><span class="brand-divider" aria-hidden="true"></span><b class="brand-bloom">BLOOM <span>GLOW</span></b></a><span class="chip ok">Connected</span></div>
   <div class="pad">
     <h2 class="hello">Hi, Lena</h2>
     <p class="small">Week of Nov 24 · times in Pacific Time</p>
@@ -380,7 +400,7 @@ body.export .scroll{overflow:hidden}
       <div><b>Movie night, upgraded</b><div class="meta">Precheck passed · Approved</div><span class="anchor">🛒 Cloud Knit Throw Blanket</span></div>
     </a>
     <h3>Needs your attention</h3>
-    <a class="panel row" href="#s6" style="text-decoration:none"><div><b style="font-size:13px">1 post on hold</b><div class="small">TikTok flagged a caption. We're fixing it.</div></div><span class="chip hold">Hold</span></a>
+    <a class="panel row" href="#s6" style="text-decoration:none"><div><b style="font-size:13px">1 post on hold</b><div class="small">TikTok's precheck flagged a caption. Our studio is fixing it.</div></div><span class="chip hold">Hold</span></a>
   </div>
 </div>
 <nav class="tabs"><a class="on" href="#s5">Home</a><a href="#s6">Schedule</a><a href="#s8">Results</a><a href="#s9">Account</a></nav>
@@ -409,7 +429,7 @@ body.export .scroll{overflow:hidden}
 
 <!-- 7 Post detail -->
 <section class="shot" id="s7">
-<p class="cap"><b>7 单条视频详情</b>预览、商品、审核记录；可申请暂停</p>
+<p class="cap"><b>7 单条视频详情</b>预览、商品、审核记录（达人只能查看，不能确认、拒绝或暂停；"达人能删已发布视频"待确认）</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
   <div class="bar"><a class="back" href="#s6">‹ Schedule</a><span class="chip wait">Scheduled</span></div>
   <div class="pad" style="padding-top:16px">
@@ -425,8 +445,8 @@ body.export .scroll{overflow:hidden}
       <li>TikTok precheck passed</li>
       <li>Approved by BLOOM GLOW studio · Nov 23</li>
     </ul></div>
-    <a class="btn ghost" href="#s6" style="margin-top:14px">Ask to hold this post</a>
-    <p class="small" style="margin-top:10px;text-align:center">You can delete any published post in TikTok, like your own videos.</p>
+    <p class="small" style="margin-top:14px">Every post is reviewed by our studio and checked by TikTok before it goes live.</p>
+    <p class="small">You can delete any published post in TikTok, like your own videos.</p>
   </div>
 </div><div class="homebar"></div></div>
 </section>
@@ -480,9 +500,9 @@ body.export .scroll{overflow:hidden}
 
 <!-- 10 Error -->
 <section class="shot" id="s10">
-<p class="cap"><b>10 异常状态</b>授权失败时说清原因和下一步，不让达人自己猜</p>
+<p class="cap"><b>10 授权失败</b>每种失败一句话 + 怎么办（下方逐条列出）</p>
 <div class="phone"><div class="status">9:41<i>●●● ▮</i></div><div class="scroll">
-  <div class="bar"><a class="brand" href="#s1"><svg><use href="#mark"/></svg>BLOOM GLOW</a><span class="chip warn">Not connected</span></div>
+  <div class="bar"><a class="brand" href="#s1"><span class="brand-ready"><svg><use href="#mark"/></svg><b>ReadyPost</b></span><span class="brand-divider" aria-hidden="true"></span><b class="brand-bloom">BLOOM <span>GLOW</span></b></a><span class="chip warn">Not connected</span></div>
   <div class="pad">
     <div class="err-icon">!</div>
     <h2 class="title">TikTok didn't connect your account</h2>
@@ -490,13 +510,16 @@ body.export .scroll{overflow:hidden}
     <div class="panel"><b style="font-size:13px">What to do</b><p class="small" style="margin:6px 0 0">Nothing for now. We'll message you when it's ready, then tap the same link again.</p></div>
     <h3>Other messages you might see</h3>
     <div class="panel"><ul class="rank">
-      <li><b>Use a US TikTok Shop creator</b><span>Your account's sales region isn't the US.</span></li>
+      <li><b>Use a US TikTok Shop creator</b><span>Your account's sales region isn't the US. Connect a US creator account.</span></li>
       <li><b>Some permissions are missing</b><span>Connect again and tap "Select all options."</span></li>
-      <li><b>This link expired</b><span>Open the link again and start from the first step.</span></li>
+      <li><b>Authorization was cancelled</b><span>You tapped Reject or closed TikTok. Tap Try again.</span></li>
+      <li><b>This link expired</b><span>Links work once, for 10 minutes. Start again from the first step.</span></li>
+      <li><b>Identity could not be verified</b><span>Use the same TikTok account you signed in with. Still stuck? Email us.</span></li>
     </ul></div>
     <a class="btn" href="#s2" style="margin-top:16px">Try again</a>
   </div>
 </div><div class="homebar"></div></div>
+<div class="spec"><h4>这一屏怎么走</h4><dl><dt>看到</dt><dd>「TikTok didn't connect your account」、本次失败的原因和该怎么做，以及其他可能出现的提示。</dd><dt>点哪里</dt><dd>点「Try again」重新开始；属于我们这边原因的，什么都不用点，等通知。</dd><dt>去哪一屏</dt><dd><a class="go" href="#s2">→ 第 2 屏</a> 重新走一遍</dd><dt>失败</dt><dd><ul><li>Not available in your region（地区不可用）：我们的应用还在等 TikTok 对美区达人开放 → 不用操作，等通知后点同一个链接。</li><li>Use a US TikTok Shop creator（需美区达人）：账号销售地区不是美国 → 换美区达人账号。</li><li>Some permissions are missing（缺权限）：授权时没勾全 → 重新连接，点「Select all options」。</li><li>Authorization was cancelled（取消了授权）：点了 Reject 或关掉了 TikTok 页 → 点 Try again。</li><li>This link expired（链接过期 / 已用过）：授权链接 10 分钟内有效且只能用一次 → 从第 2 屏重新开始。</li><li>Identity could not be verified（身份核对失败）：返回的账号和授权的不一致 → 用同一个 TikTok 账号重新授权，仍不行联系我们。</li></ul></dd></dl></div>
 </section>
 
 </div>

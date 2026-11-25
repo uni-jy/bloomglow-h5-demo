@@ -51,7 +51,7 @@ T = [
      "<h4>我们可以</h4><ul><li>发布挂车视频</li><li>把商品加入你的橱窗</li><li>读取订单和视频数据</li></ul>"),
     ("<h4>We never</h4><ul><li>Move or withdraw money</li><li>See your password or DMs</li><li>See buyer addresses</li></ul>",
      "<h4>我们不会</h4><ul><li>转账或提现</li><li>看你的密码或私信</li><li>看买家地址</li></ul>"),
-    ("BLOOM GLOW · operated with ReadyPost<br>Terms · Privacy · Contact", "BLOOM GLOW · 由 ReadyPost 提供技术支持<br>条款 · 隐私 · 联系我们"),
+    ("ReadyPost × BLOOM GLOW<br>Terms · Privacy · Contact", "ReadyPost × BLOOM GLOW<br>条款 · 隐私 · 联系我们"),
 
     # 2 check
     ("<h2 class=\"title\">Before you connect</h2>", "<h2 class=\"title\">连接前先确认</h2>"),
@@ -64,8 +64,8 @@ T = [
     ("<div>Creator terms accepted</div>", "<div>已签署达人条款</div>"),
     ("<h3>What you'll approve on TikTok</h3>", "<h3>你将在 TikTok 上同意的权限</h3>"),
     ("<em>Profile</em><span>Your handle and sales region</span>", "<em>账号资料</em><span>你的用户名和销售地区</span>"),
-    ("<em>Content posting</em><span>Upload and post shoppable videos, read video results</span>", "<em>内容发布</em><span>上传和发布挂车视频，读取视频数据</span>"),
-    ("<em>Showcase</em><span>View and add products</span>", "<em>橱窗</em><span>查看和添加商品</span>"),
+    ("<em>Content posting</em><span>Upload and post shoppable videos, add products to your showcase, read video results</span>", "<em>内容发布</em><span>上传和发布挂车视频、把商品加入橱窗、读取视频数据</span>"),
+    ("<em>Showcase</em><span>View products in your showcase</span>", "<em>橱窗</em><span>查看你橱窗里的商品</span>"),
     ("<em>Affiliate orders</em><span>Orders and commissions from your content</span>", "<em>联盟订单</em><span>你内容带来的订单和佣金</span>"),
     ("I'm 18 or older, I've read the data notice, and I agree to the posting arrangement with BLOOM GLOW.",
      "我已满 18 岁，已阅读数据说明，并同意与 BLOOM GLOW 的代发布约定。"),
@@ -80,7 +80,8 @@ T = [
     ("<b>Select all options</b>", "<b>全选</b>"),
     ("<b>User Info</b><span>Creator ID, profile, handle, region</span>", "<b>用户信息</b><span>达人 ID、资料、用户名、地区</span>"),
     ("<b>Content Posting</b><span>Upload and post shoppable videos, video metrics</span>", "<b>内容发布</b><span>上传和发布挂车视频、视频数据</span>"),
-    ("<b>Showcase Products</b><span>Read and manage products in your showcase</span>", "<b>橱窗商品</b><span>查看和管理你橱窗里的商品</span>"),
+    ("<b>Showcase Products</b><span>Read products in your showcase</span>", "<b>橱窗商品</b><span>查看你橱窗里的商品</span>"),
+    ("<b>Affiliate Orders</b><span>Orders and commissions from your content</span>", "<b>联盟订单</b><span>你内容带来的订单和佣金</span>"),
     ("I agree that my data, as described above, will be…", "我同意上述数据将被……"),
     ('<a class="rej" href="#s10">Reject</a><a class="ok" href="#s4">Authorize</a>', '<a class="rej" href="#s10">拒绝</a><a class="ok" href="#s4">授权</a>'),
 
@@ -105,7 +106,7 @@ T = [
     ("<h3>Next up · 6:30 PM</h3>", "<h3>下一条 · 下午 6:30</h3>"),
     ("Precheck passed · Approved", "预审通过 · 已审批"),
     ("<h3>Needs your attention</h3>", "<h3>需要你留意</h3>"),
-    ("<b style=\"font-size:13px\">1 post on hold</b><div class=\"small\">TikTok flagged a caption. We're fixing it.</div>", "<b style=\"font-size:13px\">1 条视频暂停中</b><div class=\"small\">TikTok 标记了一处文案，我们正在修改。</div>"),
+    ("<b style=\"font-size:13px\">1 post on hold</b><div class=\"small\">TikTok's precheck flagged a caption. Our studio is fixing it.</div>", "<b style=\"font-size:13px\">1 条视频暂停中</b><div class=\"small\">TikTok 预审标记了一处文案，工作室正在修改。</div>"),
     ('<span class="chip hold">Hold</span>', '<span class="chip hold">暂停</span>'),
 
     # 6 schedule
@@ -137,7 +138,7 @@ T = [
     ("<li>Product is in your showcase and in stock</li>", "<li>商品在你的橱窗里，且有货</li>"),
     ("<li>TikTok precheck passed</li>", "<li>TikTok 预审通过</li>"),
     ("<li>Approved by BLOOM GLOW studio · Nov 23</li>", "<li>BLOOM GLOW 工作室已审批 · 11 月 23 日</li>"),
-    ("Ask to hold this post</a>", "申请暂停这条视频</a>"),
+    ("Every post is reviewed by our studio and checked by TikTok before it goes live.", "每条视频发布前都经过我们工作室审核和 TikTok 预审。"),
     ("You can delete any published post in TikTok, like your own videos.", "已发布的视频你可以在 TikTok 里直接删除，和你自己的视频一样。"),
 
     # 8 results
@@ -171,9 +172,11 @@ T = [
     ("<b style=\"font-size:13px\">What to do</b><p class=\"small\" style=\"margin:6px 0 0\">Nothing for now. We'll message you when it's ready, then tap the same link again.</p>",
      "<b style=\"font-size:13px\">怎么办</b><p class=\"small\" style=\"margin:6px 0 0\">暂时不用操作。开放后我们会通知你，再点一次同一个链接即可。</p>"),
     ("<h3>Other messages you might see</h3>", "<h3>你可能看到的其他提示</h3>"),
-    ("<b>Use a US TikTok Shop creator</b><span>Your account's sales region isn't the US.</span>", "<b>请使用美区 TikTok Shop 达人账号</b><span>你账号的销售地区不是美国。</span>"),
+    ("<b>Use a US TikTok Shop creator</b><span>Your account's sales region isn't the US. Connect a US creator account.</span>", "<b>请使用美区 TikTok Shop 达人账号</b><span>你账号的销售地区不是美国，请连接美区达人账号。</span>"),
+    ("<b>Authorization was cancelled</b><span>You tapped Reject or closed TikTok. Tap Try again.</span>", "<b>取消了授权</b><span>你点了拒绝或关掉了 TikTok 页面，点「重试」即可。</span>"),
+    ("<b>Identity could not be verified</b><span>Use the same TikTok account you signed in with. Still stuck? Email us.</span>", "<b>身份核对失败</b><span>请用登录时的同一个 TikTok 账号授权；仍不行请发邮件联系我们。</span>"),
     ("<b>Some permissions are missing</b><span>Connect again and tap \"Select all options.\"</span>", "<b>缺少部分权限</b><span>重新连接，并点\"全选\"。</span>"),
-    ("<b>This link expired</b><span>Open the link again and start from the first step.</span>", "<b>链接已过期</b><span>重新打开链接，从第一步开始。</span>"),
+    ("<b>This link expired</b><span>Links work once, for 10 minutes. Start again from the first step.</span>", "<b>链接已过期</b><span>链接 10 分钟内有效、只能用一次，请从第一步重新开始。</span>"),
     ('<a class="btn" href="#s2" style="margin-top:16px">Try again</a>', '<a class="btn" href="#s2" style="margin-top:16px">重试</a>'),
     ("Movie night, upgraded. This throw is unreal 🍿 #cozyhome #tiktokshop", "电影之夜升级版，这条毯子太舒服了 🍿 #cozyhome #tiktokshop"),
     ("Cloud Knit Throw · CTR 6.1%", "Cloud Knit Throw · 点击率 6.1%"),
@@ -186,6 +189,30 @@ missing = []
 for a, b in T:
     if a not in out:
         missing.append(a[:70])
+    out = out.replace(a, b)
+# spec cards: show the Chinese button label next to the English original
+SPEC = [
+    ("「Continue to TikTok」", "「前往 TikTok 授权」（英文版 Continue to TikTok）"),
+    ("左上「Back」", "左上「返回」"),
+    ("「Connection is temporarily disabled」", "「Connection is temporarily disabled」（连接暂未开放）"),
+    ("「The form expired」", "「The form expired」（表单已过期）"),
+    ("「Reject / Authorize」", "「拒绝 / 授权」（英文版 Reject / Authorize）"),
+    ("点「Select all options」勾全 4 项 → 勾同意条款 → 点「Authorize」", "点「全选」（Select all options）勾全 4 项 → 勾同意条款 → 点「授权」（Authorize）"),
+    ("点 Authorize → 跳回", "点「授权」→ 跳回"),
+    ("点 Reject 或关掉 →", "点「拒绝」或关掉 →"),
+    ("点了 Reject 或关掉页面", "点了「拒绝」或关掉页面"),
+    ("重新授权时点「Select all options」", "重新授权时点「全选」"),
+    ("「You're connected」", "「连接成功」（英文版 You're connected）"),
+    ("点「Open my workspace」", "点「进入我的工作台」"),
+    ("第 10 屏「Use a US TikTok Shop creator」", "第 10 屏「请使用美区 TikTok Shop 达人账号」"),
+    ("「TikTok didn't connect your account」", "「TikTok 没有完成授权」（英文版 TikTok didn't connect your account）"),
+    ("点「Try again」重新开始", "点「重试」重新开始"),
+    ("点「Select all options」。", "点「全选」。"),
+    ("点了 Reject 或关掉了 TikTok 页 → 点 Try again。", "点了「拒绝」或关掉了 TikTok 页 → 点「重试」。"),
+]
+for a, b in SPEC:
+    if a not in out:
+        missing.append("SPEC " + a)
     out = out.replace(a, b)
 (ROOT / "zh.html").write_text(out, encoding="utf-8")
 print("replacements:", len(T), "missing:", len(missing))
