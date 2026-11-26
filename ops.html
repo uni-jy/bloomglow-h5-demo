@@ -120,6 +120,9 @@ textarea{min-height:70px;resize:vertical}
 .wb dt{color:var(--muted)}.wb dd{margin:0}
 .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;font-size:13px;z-index:20}
 .toast[hidden]{display:none}
+.srcnote{background:var(--mist);border-radius:10px;padding:9px 12px;font-size:12.5px;color:#4b3f66;margin:2px 0 6px}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--muted);cursor:pointer}
+.drop b{display:block;color:var(--ink);margin-bottom:4px}
 .empty{color:var(--muted);padding:30px 0;text-align:center}
 .placeholder{border:1px dashed var(--line);border-radius:14px;padding:40px;text-align:center;color:var(--muted)}
 @media (max-width:1180px){.main{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
@@ -210,11 +213,11 @@ function render(){
   const left = ok.reduce((n,c)=>n+Math.max(0,c.limit-c.today),0);
   let body;
   if (tab==="todo") {
-    body = todo.length ? todo.map(c => `<div class="row"><div class="thumb ${c.th}">${E(c.dur)}</div>
+    body = `<div class="srcnote"><b>片从哪来：</b>做片人在「选品」任务里点<b>「上传片子」</b>交片（带文案和 AI 标识），交完自动出现在这里；不属于任何任务的片，点右上「上传视频」。</div>` + (todo.length ? todo.map(c => `<div class="row"><div class="thumb ${c.th}">${E(c.dur)}</div>
       <div><h4>${E(c.title)}</h4><div class="meta">商品 <b>${E(prod(c.pid).t)}</b> · <span class="pid">${c.pid}</span></div>
-      <div class="meta">成片 ${E(c.id)} · ${E(c.maker)} 做好于 ${E(c.done)} · ${c.mb} MB${c.mb>10?' · <span class="chip c-hold">超 10MB，发前自动压缩</span>':''}</div></div>
+      <div class="meta">成片 ${E(c.id)} · ${E(c.maker)} ${c.src==="direct"?"在分发页直接上传":"在任务里交片"} · ${E(c.done)} · ${c.mb} MB${c.mb>10?' · <span class="chip c-hold">超 10MB，发前自动压缩</span>':''}</div></div>
       <div class="right"><button class="btn plum" data-dist="${c.id}">分发</button><span class="meta">还没分给达人</span></div></div>`).join("")
-      : `<div class="empty">做好的片都分出去了。</div>`;
+      : `<div class="empty">做好的片都分出去了。</div>`);
   } else {
     const list = JOBS.filter(j => tabOf(j)===tab);
     body = list.length ? list.map(j => { const s=ST[j.st]; return `<div class="row click" data-job="${j.no}"><div class="thumb ${j.clip.th}">${E(j.clip.id.slice(-2))}</div>
@@ -225,7 +228,7 @@ function render(){
   }
   $("#view").innerHTML = `
     <div class="head"><div><h1>分发</h1><p>把做好的片和它挂的商品，分给一个已授权的达人号；运营确认后，到点经 TikTok 接口自动发出，链接和数据写回分发单。</p></div>
-      <button class="btn ghost" id="go-acc">邀请达人授权</button></div>
+      <div style="display:flex;gap:8px"><button class="btn ghost" id="go-up">上传视频</button><button class="btn ghost" id="go-acc">邀请达人授权</button></div></div>
     <div class="stats">
       <div class="stat"><b>${todo.length}</b><span>做好待分发的片</span></div>
       <div class="stat"><b>${ok.length} / ${CREATORS.length}</b><span>能自动发的达人号</span></div>
@@ -244,6 +247,7 @@ function render(){
 function specCard(t){
   const S = {
     todo:`<dt>看到</dt><dd>制作交付的成片：片名、挂的商品、制作人、做好时间、大小。</dd>
+      <dt>片从哪来</dt><dd>不用另传：做片人在「选品」任务里点「上传片子」交片，文案和 AI 标识一起交；交完自动进这里。任务外的片点「上传视频」。</dd>
       <dt>点哪里</dt><dd>点「分发」→ 右侧打开分发单。</dd>
       <dt>去哪</dt><dd>填好提交后进入「已排期」，状态「待确认」。</dd>
       <dt>注意</dt><dd><ul><li>超过 10MB 的片发前自动压缩到 10MB 以内；压不下来会停在「预审不过」并写原因。</li><li>一条片只分给一个号（已定）：分出去后就从「待分发」里消失；只有取消、过期或发布失败后才能重新分。</li></ul></dd>`,
@@ -309,6 +313,28 @@ function drawDrawer(){
    <div class="bar"><span class="meta">提交后是「待确认」，还要有人看一遍点确认才会发</span>
      <div style="display:flex;gap:8px"><button class="btn ghost" id="dcancel">取消</button><button class="btn plum" id="dsubmit" ${bad||F.route!=="api"?"disabled":""}>提交分发</button></div></div>`;
 }
+
+// ---------- direct upload (clips that don't belong to a task) ----------
+function openUpload(){
+  $("#drawer").innerHTML = `<button class="x" id="dx" aria-label="关闭">✕</button>
+   <h2>上传视频</h2><div class="meta">给不属于任何选品任务的片用；任务里的片请在「选品」任务里点「上传片子」交片。</div>
+   <div class="sec"><b>视频文件 <small>mp4 / mov / webm，最大 200MB；超过 10MB 的发前自动压缩</small></b>
+     <label class="drop"><input type="file" accept="video/mp4,video/quicktime,video/webm" id="u-file" hidden><b>点这里选视频</b>演示稿不会真的上传</label>
+     <div class="hint" id="u-name">还没选文件</div></div>
+   <div class="sec"><label>片名</label><input type="text" id="u-title" value="厨房收纳一分钟"></div>
+   <div class="sec"><label>挂的商品 ID <small>分发时还能改</small></label><input type="text" id="u-pid" value="1729384756102938473"></div>
+   <div class="sec"><label>发布文案</label><textarea id="u-cap">1-minute kitchen reset 🧺 #organize</textarea>
+     <div class="hint"><label><input type="checkbox" id="u-ai" checked> 这条是 AI 生成内容</label></div></div>
+   <div class="bar"><span class="meta">上传后进入「待分发」，再按正常流程分发、确认</span>
+     <div style="display:flex;gap:8px"><button class="btn ghost" id="dcancel">取消</button><button class="btn plum" id="u-ok">上传</button></div></div>`;
+  $("#drawer-ov").hidden=false;
+}
+function doUpload(){
+  const pid=$("#u-pid").value.trim(), title=$("#u-title").value.trim();
+  if(!title||!/^\d{1,30}$/.test(pid)){ toast("片名和商品 ID（纯数字）要填"); return; }
+  CLIPS.unshift({id:"P-1126-U"+(CLIPS.length+1), title, pid, maker:"小草", done:"11/26 刚刚", dur:"0:22", mb:12.8, th:"t5", cap:$("#u-cap").value, src:"direct"});
+  $("#drawer-ov").hidden=true; tab="todo"; render(); toast("已上传，出现在「待分发」最上面。");
+}
 function submitDist(){
   const c=F.clip; c.used=true;
   const j={no:`D-1126-${String(++seq).padStart(3,"0")}`, clip:{id:c.id,title:c.title,th:c.th,mb:c.mb}, pid:F.pid, h:F.h, at:F.at.slice(5).replace("-","/").replace("T"," "), st:"draft", by:null, cap:F.cap, kw:F.kw, step:1};
@@ -360,6 +386,8 @@ document.addEventListener("click", e => {
   if (t.dataset.tab){ tab=t.dataset.tab; render(); return; }
   if (t.dataset.dist){ openDist(t.dataset.dist); return; }
   if (t.dataset.job){ openDetail(t.dataset.job); return; }
+  if (t.id==="go-up"){ openUpload(); return; }
+  if (t.id==="u-ok"){ doUpload(); return; }
   if (t.id==="go-acc"){ location.href="index.html?screen=s1"; return; }
   if (t.dataset.h){ if (t.getAttribute("aria-disabled")) { toast(t.querySelector(".why").textContent+"，不能选"); return; } F.h=t.dataset.h; drawDrawer(); return; }
   if (t.dataset.route){ F.route=t.dataset.route; drawDrawer(); return; }
@@ -382,11 +410,13 @@ document.addEventListener("input", e => {
   else return;
   const pos = e.target.selectionStart, keep=id; drawDrawer(); const el=document.getElementById(keep); if(el){ el.focus(); try{ if(pos!=null) el.setSelectionRange(pos,pos);}catch(_){} }
 });
+document.addEventListener("change", e => { if (e.target.id==="u-file" && e.target.files[0]) $("#u-name").textContent="已选："+e.target.files[0].name; });
 ["drawer-ov","modal-ov"].forEach(id=>$("#"+id).addEventListener("click",e=>{ if(e.target.id===id) e.target.hidden=true; }));
 // ?view=new opens the new-distribution drawer, ?view=job:D-1125-014 opens a job (for screenshots / links)
 const v = new URLSearchParams(location.search).get("view");
 render();
-if (v==="new"){ openDist(CLIPS[0].id); F.h="@lena.homefinds"; drawDrawer(); }
+if (v==="upload") openUpload();
+else if (v==="new"){ openDist(CLIPS[0].id); F.h="@lena.homefinds"; drawDrawer(); }
 else if (v && v.startsWith("job:")) openDetail(v.slice(4));
 else if (v && v.startsWith("tab:")){ tab=v.slice(4); render(); }
 </script>
