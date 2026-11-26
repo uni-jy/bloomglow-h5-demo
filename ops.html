@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="zh-CN" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google" content="notranslate">
+<meta name="robots" content="noindex">
+<title>ReadyPost Studio · 分发（演示）</title>
+<style>
+:root{--ink:#1d1d1f;--muted:#6e6a78;--line:#e7e4ec;--side:#f4f3f6;--plum:#997BB9;--plum-d:#6b4f8f;--mist:#f1ecf7;--blue:#eef4ff;--blue-l:#c5d8f5;--blue-d:#2f5fb3;--green:#1f7a4a;--green-p:#e6f4ec;--amber:#8a5a00;--amber-p:#fff3d6;--red:#b3261e;--red-p:#fdecea;--gray-p:#f1f1f3}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.55 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.demo-bar{background:#FFF4C2;color:#5b4a00;font-size:12.5px;padding:7px 16px;text-align:center;border-bottom:1px solid #e9d98a}
+.demo-bar a{color:#5b4a00;font-weight:600}
+.app{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 34px)}
+/* sidebar (follows the real 带货车间) */
+.side{background:var(--side);border-right:1px solid var(--line);padding:22px 14px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;gap:12px;align-items:center;padding:0 8px 16px}
+.brand svg{width:44px;height:44px;border-radius:10px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.brand b{display:block;font-size:19px;letter-spacing:-.3px}
+.brand small{font-size:10.5px;letter-spacing:.18em;color:var(--muted)}
+.who{display:flex;gap:12px;align-items:center;background:var(--blue);border:1px solid var(--blue-l);border-radius:14px;padding:12px 14px;margin-bottom:14px}
+.who i{width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;font-style:normal;color:var(--blue-d)}
+.who small{display:block;font-size:11.5px;color:var(--muted)}
+.who b{font-size:16px}
+.nav{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;text-decoration:none;color:#333;font-size:15px}
+.nav svg{width:18px;height:18px;flex:none}
+.nav.on{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.07);font-weight:650;color:var(--ink)}
+.nav .new{margin-left:auto;font-size:11px;background:var(--plum);color:#fff;border-radius:999px;padding:1px 7px;font-weight:600}
+.side .gap{flex:1}
+.side .foot{font-size:12px;color:var(--muted);padding:8px 14px}
+/* main */
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;padding:26px 30px 60px;align-items:start}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:16px}
+.head h1{margin:0;font-size:24px;letter-spacing:-.3px}
+.head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.btn{white-space:nowrap;border:0;border-radius:10px;padding:9px 16px;background:var(--ink);color:#fff;font-weight:600;font-size:13.5px}
+.btn.plum{background:var(--plum)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.danger{background:#fff;color:var(--red);border:1px solid #f0c6c2}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.stat b{display:block;font-size:22px;letter-spacing:-.4px}
+.stat span{font-size:12px;color:var(--muted)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.tabs button{border:0;background:none;padding:9px 14px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--ink);font-weight:650;border-color:var(--plum)}
+.tabs em{font-style:normal;font-size:11.5px;background:var(--gray-p);border-radius:999px;padding:0 7px;margin-left:4px}
+.row{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line)}
+.row.click{cursor:pointer}.row.click:hover{background:#fbfafc}
+.thumb{width:64px;height:84px;border-radius:9px;background:linear-gradient(160deg,#d9cce9,#8e6fb0);display:grid;place-items:end start;padding:5px;color:#fff;font-size:10.5px;font-weight:600}
+.thumb.t2{background:linear-gradient(160deg,#f3d9c9,#b9785a)}.thumb.t3{background:linear-gradient(160deg,#cfe5dc,#4f8a74)}.thumb.t4{background:linear-gradient(160deg,#d6dcef,#56628f)}.thumb.t5{background:linear-gradient(160deg,#efe3c6,#a88a3c)}
+.row h4{margin:0 0 2px;font-size:14.5px}
+.meta{font-size:12.5px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+.pid{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.chip{display:inline-block;font-size:12px;border-radius:999px;padding:2px 9px;font-weight:600;white-space:nowrap}
+.c-wait{background:var(--blue);color:var(--blue-d)}.c-ok{background:var(--green-p);color:var(--green)}.c-hold{background:var(--amber-p);color:var(--amber)}.c-bad{background:var(--red-p);color:var(--red)}.c-gray{background:var(--gray-p);color:#555}.c-plum{background:var(--mist);color:var(--plum-d)}
+.right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+/* aside */
+.card{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;margin-bottom:14px}
+.card h3{margin:0 0 8px;font-size:14px;display:flex;justify-content:space-between;align-items:baseline}
+.card h3 a{font-size:12px;color:var(--plum-d);font-weight:600;text-decoration:none}
+.acc{display:grid;grid-template-columns:1fr auto;gap:2px 8px;padding:8px 0;border-top:1px solid var(--line);font-size:13px}
+.acc:first-of-type{border-top:0}
+.acc small{color:var(--muted);font-size:12px}
+.spec{font-size:12.5px;line-height:1.6}
+.spec dl{display:grid;grid-template-columns:58px 1fr;gap:6px 8px;margin:0}
+.spec dt{color:var(--plum-d);font-weight:650}.spec dd{margin:0}
+.spec ul{margin:2px 0 0;padding-left:16px}
+.spec code{font-size:11.5px;background:var(--gray-p);border-radius:4px;padding:0 4px}
+.spec .go{color:var(--plum-d);font-weight:600}
+/* drawer */
+.ov{position:fixed;inset:0;background:rgba(29,26,36,.36);display:flex;justify-content:flex-end;z-index:9}
+.ov[hidden]{display:none}
+.drawer{width:min(720px,100%);height:100%;background:#fff;overflow:auto;padding:22px 26px 90px;box-shadow:-12px 0 40px rgba(0,0,0,.12)}
+.drawer h2{margin:0 0 2px;font-size:20px}
+.x{float:right;border:0;background:var(--gray-p);width:34px;height:34px;border-radius:50%}
+.sec{margin-top:18px}
+.sec>label,.sec>b{display:block;font-weight:650;margin-bottom:8px}
+.sec>label small,.sec>b small{color:var(--muted);font-weight:400;margin-left:6px}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:left;background:#fff;display:grid;gap:2px}
+.opt.on{border-color:var(--plum);box-shadow:0 0 0 2px var(--mist)}
+.opt.off{background:#fafafa;color:#999}
+.opt b{font-size:13.5px}.opt span{font-size:12px;color:var(--muted)}
+.opt .why{color:var(--red)}
+input[type=text],input[type=datetime-local],textarea,select{width:100%;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:70px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hint{font-size:12px;color:var(--muted);margin-top:4px}
+.checks{border:1px solid var(--line);border-radius:12px;padding:6px 14px;margin-top:8px}
+.ck{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.ck:last-child{border-bottom:0}
+.ck i{font-style:normal;font-weight:700;text-align:center}
+.ck.ok i{color:var(--green)}.ck.no i{color:var(--red)}.ck.note i{color:var(--amber)}
+.route{display:flex;gap:8px}
+.route .opt{flex:1}
+.bar{position:sticky;bottom:-90px;margin:22px -26px -90px;padding:14px 26px;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+/* modal */
+.modal{width:min(560px,94vw);margin:auto;background:#fff;border-radius:18px;padding:22px 24px;max-height:90vh;overflow:auto}
+.ov.center{justify-content:center;align-items:center}
+.sum{display:grid;grid-template-columns:100px 1fr;gap:6px 12px;font-size:13px;margin:12px 0}
+.sum dt{color:var(--muted)}.sum dd{margin:0}
+.digest{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;background:var(--gray-p);border-radius:8px;padding:6px 8px;word-break:break-all}
+/* detail */
+.tl{list-style:none;margin:8px 0 0;padding:0}
+.tl li{display:grid;grid-template-columns:18px 1fr auto;gap:10px;padding:8px 0;font-size:13px;position:relative}
+.tl li:before{content:"";position:absolute;left:8px;top:22px;bottom:-8px;width:2px;background:var(--line)}
+.tl li:last-child:before{display:none}
+.tl .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);background:#fff;margin-top:1px}
+.tl .done .dot{background:var(--green);border-color:var(--green)}
+.tl .now .dot{background:#fff;border-color:var(--plum);box-shadow:0 0 0 3px var(--mist)}
+.tl .bad .dot{background:var(--red);border-color:var(--red)}
+.tl small{color:var(--muted)}
+.wb{display:grid;grid-template-columns:110px 1fr;gap:6px 12px;font-size:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.wb dt{color:var(--muted)}.wb dd{margin:0}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;font-size:13px;z-index:20}
+.toast[hidden]{display:none}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+.placeholder{border:1px dashed var(--line);border-radius:14px;padding:40px;text-align:center;color:var(--muted)}
+@media (max-width:1180px){.main{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.app{grid-template-columns:1fr}.side{position:static;height:auto}.main{padding:18px}.pick,.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="demo-bar">演示稿（运营后台新增「分发」页）· 数据、账号、商品均为示意，不连接真实后台 · 达人那一侧看到的画面见 <a href="index.html">H5 达人端 10 屏</a> · <a href="zh.html">中文版</a></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 1080 1080"><rect width="1080" height="1080" fill="#fff"/><rect x="211.5" y="225" width="252" height="630" fill="#1d1d1f"/><rect x="463.5" y="225" width="261" height="252" fill="#997BB9"/><ellipse cx="715.5" cy="351" rx="126" ry="126" fill="#997BB9"/><path d="M463.5 477H625.5L868.5 855H652.5Z" fill="#1d1d1f"/></symbol>
+</svg>
+<div class="app">
+<aside class="side">
+  <div class="brand"><svg><use href="#mark"/></svg><div><b>ReadyPost</b><small>STUDIO · 带货车间</small></div></div>
+  <div class="who"><i>👤</i><div><small>当前身份</small><b>小草</b></div></div>
+  <a class="nav" href="#" data-nav="other"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16V9M10 16V4M16 16v-5"/></svg>经营数据</a>
+  <a class="nav" href="#" data-nav="other"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="14" height="12" rx="2"/><path d="M9 8l3 2-3 2z"/></svg>选品</a>
+  <a class="nav" href="#" data-nav="other"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="7" r="3"/><path d="M2.5 16c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5M13 4.5a2.5 2.5 0 010 5M15 12c1.4.6 2.2 2 2.5 4"/></svg>账号</a>
+  <a class="nav on" href="#" data-nav="dist"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10h8M8 6l4 4-4 4"/><rect x="13" y="4" width="4" height="12" rx="1.5"/></svg>分发<span class="new">新</span></a>
+  <div class="gap"></div>
+  <a class="nav" href="#" data-nav="other"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h7l3 3v11H5z"/><path d="M8 9h5M8 12h5"/></svg>选品依据</a>
+  <a class="nav" href="#" data-nav="other"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10h4l2-5 4 10 2-5h4"/></svg>体检</a>
+  <div class="foot">演示稿 · 不是正式版<br>数据为示意</div>
+</aside>
+
+<main class="main">
+  <section id="view"></section>
+  <aside id="aside"></aside>
+</main>
+</div>
+
+<div class="ov" id="drawer-ov" hidden><div class="drawer" id="drawer"></div></div>
+<div class="ov center" id="modal-ov" hidden><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+// ---------- sample data (fictional) ----------
+const NOW = new Date("2026-11-26T10:00:00+08:00");
+const CREATORS = [
+  {h:"@lena.homefinds", name:"Lena", fans:"1.2 万", st:"ok", today:1, limit:3, showcase:["1729384756102938471","1729384756102938472","1729384756102938474"]},
+  {h:"@maya.cooks", name:"Maya", fans:"3,480", st:"ok", today:3, limit:3, showcase:["1729384756102938471","1729384756102938473"]},
+  {h:"@kim.glowup", name:"Kim", fans:"8,950", st:"ok", today:0, limit:3, showcase:["1729384756102938474"]},
+  {h:"@jordan.deals", name:"Jordan", fans:"2,130", st:"reauth", today:0, limit:3, showcase:[]},
+];
+const PRODUCTS = {
+  "1729384756102938471":{t:"Cloud Knit Throw Blanket", k:"Cozy Throw Blanket", stock:true},
+  "1729384756102938472":{t:"Glow Vanity Mirror", k:"LED Vanity Mirror", stock:true},
+  "1729384756102938473":{t:"Linen Laundry Hamper", k:"Linen Hamper", stock:true},
+  "1729384756102938474":{t:"Arc Desk Lamp", k:"Arc Desk Lamp", stock:false},
+};
+const CLIPS = [
+  {id:"P-1125-07", title:"电影之夜升级版", pid:"1729384756102938471", maker:"小尤", done:"11/25 14:20", dur:"0:28", mb:9.6, th:"t1",
+   cap:"Movie night, upgraded. This throw is unreal 🍿 #cozyhome #tiktokshop"},
+  {id:"P-1125-09", title:"3 秒检查妆容", pid:"1729384756102938472", maker:"小赖", done:"11/25 16:05", dur:"0:21", mb:22.4, th:"t2",
+   cap:"3-second makeup check before you leave ✨ #vanitymirror"},
+  {id:"P-1125-11", title:"洗衣日，分类搞定", pid:"1729384756102938473", maker:"小尤", done:"11/25 18:40", dur:"0:24", mb:7.9, th:"t3",
+   cap:"Laundry day, sorted. Linen hamper that actually looks nice 🧺"},
+  {id:"P-1126-02", title:"夜班桌面焕新", pid:"1729384756102938474", maker:"小赖", done:"11/26 09:10", dur:"0:19", mb:6.2, th:"t4",
+   cap:"Night shift desk glow-up 💡 #desksetup"},
+];
+let JOBS = [
+  {no:"D-1126-001", clip:{id:"P-1124-03",title:"旅行随身补光",th:"t5",mb:8.1}, pid:"1729384756102938472", h:"@lena.homefinds", at:"11/26 18:30", st:"ready", by:"小草", cap:"Travel-size glow ✈️", step:4},
+  {no:"D-1126-002", clip:{id:"P-1124-05",title:"沙发角落焕新",th:"t1",mb:9.0}, pid:"1729384756102938471", h:"@maya.cooks", at:"11/26 11:00", st:"pub", by:"小草", cap:"Couch corner refresh", step:7, vid:"7441829356102938471", orders:3, comm:"$18.60"},
+  {no:"D-1126-003", clip:{id:"P-1124-08",title:"桌面收纳三连",th:"t4",mb:5.4}, pid:"1729384756102938474", h:"@kim.glowup", at:"11/27 09:00", st:"confirmed", by:"小草", cap:"Desk reset in 3 moves", step:2},
+  {no:"D-1125-014", clip:{id:"P-1124-02",title:"毛毯开箱",th:"t2",mb:9.8}, pid:"1729384756102938471", h:"@lena.homefinds", at:"11/25 18:30", st:"blocked", by:"小草", cap:"Unboxing the coziest throw", step:3, why:"TikTok 预审不过：文案含「best price ever」被判为夸大用语。改文案后重新确认。"},
+  {no:"D-1125-011", clip:{id:"P-1123-06",title:"厨房小工具",th:"t3",mb:7.2}, pid:"1729384756102938473", h:"@jordan.deals", at:"11/26 12:00", st:"reauth", by:"小草", cap:"Kitchen helper", step:2, why:"达人授权已失效，需要达人重新点授权链接（H5 第 1 屏）。"},
+];
+const ST = {
+  draft:["待确认","c-plum"], confirmed:["已确认 · 等上传","c-wait"], prechecking:["预审中","c-wait"], ready:["预审通过 · 待发","c-wait"],
+  sending:["发送中","c-wait"], pub:["已发","c-ok"], blocked:["预审不过","c-bad"], reauth:["需重新授权","c-hold"], uncertain:["结果待核实","c-hold"],
+  expired:["已过期","c-gray"], cancelled:["已取消","c-gray"]
+};
+const STEPS = ["填写分发","运营确认","上传视频（发前 20 分钟）","TikTok 预审","到点发布","TikTok 处理","已发 · 写回链接","每天写回数据"];
+const tabOf = j => j.st==="pub" ? "done" : ["blocked","reauth","uncertain","expired"].includes(j.st) ? "issue" : j.st==="cancelled" ? "done" : "sched";
+let tab = "todo", seq = 4;
+
+const $ = s => document.querySelector(s);
+const E = x => String(x ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const prod = pid => PRODUCTS[pid] || {t:"（商品 ID 未找到）", k:"", stock:false};
+const cr = h => CREATORS.find(c => c.h === h);
+function toast(t){ const el=$("#toast"); el.textContent=t; el.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(()=>el.hidden=true,3200); }
+
+// ---------- list view ----------
+function render(){
+  const todo = CLIPS.filter(c => !c.used);
+  const count = {todo:todo.length, sched:JOBS.filter(j=>tabOf(j)==="sched").length, done:JOBS.filter(j=>tabOf(j)==="done").length, issue:JOBS.filter(j=>tabOf(j)==="issue").length};
+  const ok = CREATORS.filter(c=>c.st==="ok");
+  const left = ok.reduce((n,c)=>n+Math.max(0,c.limit-c.today),0);
+  let body;
+  if (tab==="todo") {
+    body = todo.length ? todo.map(c => `<div class="row"><div class="thumb ${c.th}">${E(c.dur)}</div>
+      <div><h4>${E(c.title)}</h4><div class="meta">商品 <b>${E(prod(c.pid).t)}</b> · <span class="pid">${c.pid}</span></div>
+      <div class="meta">成片 ${E(c.id)} · ${E(c.maker)} 做好于 ${E(c.done)} · ${c.mb} MB${c.mb>10?' · <span class="chip c-hold">超 10MB，发前自动压缩</span>':''}</div></div>
+      <div class="right"><button class="btn plum" data-dist="${c.id}">分发</button><span class="meta">还没分给达人</span></div></div>`).join("")
+      : `<div class="empty">做好的片都分出去了。</div>`;
+  } else {
+    const list = JOBS.filter(j => tabOf(j)===tab);
+    body = list.length ? list.map(j => { const s=ST[j.st]; return `<div class="row click" data-job="${j.no}"><div class="thumb ${j.clip.th}">${E(j.clip.id.slice(-2))}</div>
+      <div><h4>${E(j.clip.title)} <span class="meta">→</span> ${E(j.h)}</h4><div class="meta">商品 <b>${E(prod(j.pid).t)}</b> · <span class="pid">${j.pid}</span></div>
+      <div class="meta">分发单 ${E(j.no)} · 发布 ${E(j.at)}（北京）· 确认人 ${E(j.by||"—")}</div>${j.why?`<div class="meta" style="color:var(--red)">${E(j.why)}</div>`:""}</div>
+      <div class="right"><span class="chip ${s[1]}">${s[0]}</span>${j.st==="pub"?`<span class="meta">${j.orders} 单 · 佣金 ${j.comm}</span>`:""}</div></div>`; }).join("")
+      : `<div class="empty">这里暂时没有分发单。</div>`;
+  }
+  $("#view").innerHTML = `
+    <div class="head"><div><h1>分发</h1><p>把做好的片和它挂的商品，分给一个已授权的达人号；运营确认后，到点经 TikTok 接口自动发出，链接和数据写回分发单。</p></div>
+      <button class="btn ghost" id="go-acc">邀请达人授权</button></div>
+    <div class="stats">
+      <div class="stat"><b>${todo.length}</b><span>做好待分发的片</span></div>
+      <div class="stat"><b>${ok.length} / ${CREATORS.length}</b><span>能自动发的达人号</span></div>
+      <div class="stat"><b>${left}</b><span>今天还能发（美西当天）</span></div>
+      <div class="stat"><b>${count.issue}</b><span>需要处理</span></div>
+    </div>
+    <div class="tabs">${[["todo","待分发"],["sched","已排期"],["done","已发出"],["issue","需处理"]].map(([k,t])=>`<button data-tab="${k}" class="${tab===k?"on":""}">${t}<em>${count[k]}</em></button>`).join("")}</div>
+    ${body}`;
+  $("#aside").innerHTML = `
+    <div class="card"><h3>已授权的达人号 <a href="index.html?screen=s1">授权页 →</a></h3>
+      ${CREATORS.map(c=>`<div class="acc"><b>${E(c.h)}</b><span class="chip ${c.st==="ok"?"c-ok":"c-hold"}">${c.st==="ok"?"已连接":"需重新授权"}</span>
+        <small>粉丝 ${c.fans} · 橱窗 ${c.showcase.length} 个品</small><small>今天 ${c.today} / ${c.limit}</small></div>`).join("")}
+      <div class="hint">只有达人点过授权链接（H5 第 1–4 屏）的号才会出现在这里。和「账号」页里小西云手机上的号是两套，互不影响。</div></div>
+    ${specCard(tab)}`;
+}
+function specCard(t){
+  const S = {
+    todo:`<dt>看到</dt><dd>制作交付的成片：片名、挂的商品、制作人、做好时间、大小。</dd>
+      <dt>点哪里</dt><dd>点「分发」→ 右侧打开分发单。</dd>
+      <dt>去哪</dt><dd>填好提交后进入「已排期」，状态「待确认」。</dd>
+      <dt>注意</dt><dd><ul><li>超过 10MB 的片发前自动压缩到 10MB 以内；压不下来会停在「预审不过」并写原因。</li><li>一条片目前只分给一个号（同一条片发到多个号要不要允许，待草姐定）。</li></ul></dd>`,
+    sched:`<dt>看到</dt><dd>已分出去、还没发的单：待确认 → 已确认 → 预审中 → 预审通过·待发。</dd>
+      <dt>点哪里</dt><dd>点一行看进度；「待确认」的单在详情里点「确认分发」。</dd>
+      <dt>自动</dt><dd>发布前 20 分钟自动上传和预审；到点前再查一次授权、橱窗、库存，都对才发。</dd>
+      <dt>达人侧</dt><dd>达人在 H5 <a class="go" href="index.html?screen=s6">第 6 屏排期</a>看得到这条，但不能确认、拒绝或暂停。</dd>`,
+    done:`<dt>看到</dt><dd>已发出的单：视频链接、发布时间，每天写回订单数和预估佣金。</dd>
+      <dt>说明</dt><dd>播放、点赞接口拿不到，不显示；佣金以 TikTok 结算为准。</dd>
+      <dt>撤回</dt><dd>官方没有删视频的接口；要下架只能由达人在 TikTok App 里删（待确认）。</dd>`,
+    issue:`<dt>看到</dt><dd>没能按时发出的单，每条写清原因和下一步。</dd>
+      <dt>怎么办</dt><dd><ul><li>预审不过：改文案或换片 → 重新确认。</li><li>需重新授权：把授权链接再发给达人（H5 第 1 屏）。</li><li>结果待核实：去达人主页看有没有发出，再在详情里填核实结果；系统不会自动重发。</li><li>已过期：超过计划时间 2 小时还没发，改时间后重新确认。</li></ul></dd>`,
+  };
+  return `<div class="card spec"><h3>这一页怎么走</h3><dl>${S[t]}</dl></div>`;
+}
+
+// ---------- new distribution drawer ----------
+let F = null;
+function openDist(clipId){
+  const c = CLIPS.find(x=>x.id===clipId);
+  F = {clip:c, pid:c.pid, h:null, at:"2026-11-27T10:30", cap:c.cap, kw:prod(c.pid).k, ai:true, route:"api"};
+  drawDrawer(); $("#drawer-ov").hidden=false;
+}
+function checks(){
+  const c=F.h&&cr(F.h), p=prod(F.pid), out=[];
+  out.push(c ? (c.st==="ok" ? ["ok",`达人 ${c.h} 授权有效`] : ["no",`达人 ${c.h} 授权已失效，需要重新授权`]) : ["no","还没选达人"]);
+  if (c) out.push(c.today < c.limit ? ["ok",`当天条数：已排 ${c.today} / ${c.limit}，还能排`] : ["no",`当天条数已满（${c.today} / ${c.limit}），换一天或换个号`]);
+  if (!PRODUCTS[F.pid]) out.push(["no","商品 ID 找不到"]);
+  else {
+    if (c) out.push(c.showcase.includes(F.pid) ? ["ok","商品已在这个达人的橱窗里"] : ["note","商品不在这个达人的橱窗：提交时自动加入橱窗（加不进去会写原因）"]);
+    out.push(p.stock ? ["ok","商品有货、审核通过"] : ["no","商品现在没货，不能挂车"]);
+  }
+  const mins = (new Date(F.at+":00+08:00") - NOW)/60000;
+  out.push(mins >= 30 ? ["ok",`发布时间：北京 ${F.at.replace("T"," ")} = 美西 ${pt(F.at)}`] : ["no","发布时间要晚于现在至少 30 分钟"]);
+  out.push(F.cap.trim() ? ["ok","发布文案已填"] : ["no","发布文案不能空"]);
+  out.push(F.kw.trim() && F.kw.length<=34 ? ["ok",`挂车名称「${F.kw}」`] : ["no","挂车名称要填，最多 34 字"]);
+  if (F.clip.mb>10) out.push(["note",`视频 ${F.clip.mb} MB，发前自动压缩到 10MB 以内`]);
+  out.push(F.route==="api" ? ["ok","走 API 自动发；这条片不会再进小西定时"] : ["note","走小西云手机定时：按原来的发布流程，不经过本页"]);
+  return out;
+}
+function pt(local){ const d=new Date(local+":00+08:00"); return d.toLocaleString("zh-CN",{timeZone:"America/Los_Angeles",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit",hour12:false}); }
+function drawDrawer(){
+  const c=F.clip, ck=checks(), bad=ck.some(x=>x[0]==="no");
+  $("#drawer").innerHTML = `<button class="x" id="dx" aria-label="关闭">✕</button>
+   <h2>分发：${E(c.title)}</h2><div class="meta">成片 ${E(c.id)} · ${E(c.maker)} 做好于 ${E(c.done)} · ${c.dur} · ${c.mb} MB</div>
+   <div class="sec"><b>① 片 <small>制作交付的成片，按文件指纹锁定；换片要重新分发</small></b>
+     <div class="row" style="border:1px solid var(--line);border-radius:12px;padding:10px"><div class="thumb ${c.th}">${c.dur}</div><div><h4>${E(c.title)}</h4><div class="meta">${c.mb} MB · 竖屏</div></div><span class="chip c-plum">已选</span></div></div>
+   <div class="sec"><label>② 品 <small>默认带出制作时挂的商品，可改</small></label>
+     <div class="two"><div><input type="text" id="f-pid" value="${E(F.pid)}"><div class="hint">商品 ID</div></div><div><input type="text" id="f-kw" maxlength="34" value="${E(F.kw)}"><div class="hint">挂车名称（显示在购物车上，最多 34 字）</div></div></div>
+     <div class="hint">商品：<b>${E(prod(F.pid).t)}</b></div></div>
+   <div class="sec"><b>③ 达人号 <small>只列已授权的号；灰色的现在不能选</small></b>
+     <div class="pick">${CREATORS.map(x=>{const off=x.st!=="ok"||x.today>=x.limit;const why=x.st!=="ok"?"授权已失效":x.today>=x.limit?"今天已满 "+x.today+"/"+x.limit:"";
+       return `<button class="opt ${F.h===x.h?"on":""} ${off?"off":""}" data-h="${x.h}" ${off?'aria-disabled="true"':""}><b>${E(x.h)}</b><span>粉丝 ${x.fans} · 今天 ${x.today}/${x.limit} · ${x.showcase.includes(F.pid)?"橱窗里有这个品":"橱窗里没有这个品"}</span>${why?`<span class="why">${why}</span>`:""}</button>`}).join("")}</div></div>
+   <div class="sec"><label>④ 什么时候发 <small>按北京时间填，下面同时显示美西时间</small></label>
+     <div class="two"><input type="datetime-local" id="f-at" value="${F.at}"><div class="hint" style="margin:0;align-self:center">美西 ${pt(F.at)}</div></div></div>
+   <div class="sec"><label>⑤ 发布文案与标识</label><textarea id="f-cap">${E(F.cap)}</textarea>
+     <div class="hint"><label><input type="checkbox" id="f-ai" ${F.ai?"checked":""}> 这条是 AI 生成内容（发出时带 TikTok 的 AI 标识）</label></div></div>
+   <div class="sec"><b>⑥ 走哪条路发 <small>一条片只能走一条路，防止两边都发</small></b>
+     <div class="route"><button class="opt ${F.route==="api"?"on":""}" data-route="api"><b>API 自动发（达人授权号）</b><span>本页负责，到点自动发，链接和数据写回</span></button>
+     <button class="opt ${F.route==="xiaoxi"?"on":""}" data-route="xiaoxi"><b>小西云手机定时</b><span>按原发布流程，不在本页处理</span></button></div></div>
+   <div class="sec"><b>提交前检查 <small>任何一项是 ✕ 就不能提交</small></b>
+     <div class="checks">${ck.map(([k,t])=>`<div class="ck ${k}"><i>${k==="ok"?"✓":k==="no"?"✕":"!"}</i><span>${E(t)}</span></div>`).join("")}</div></div>
+   <div class="bar"><span class="meta">提交后是「待确认」，还要有人看一遍点确认才会发</span>
+     <div style="display:flex;gap:8px"><button class="btn ghost" id="dcancel">取消</button><button class="btn plum" id="dsubmit" ${bad||F.route!=="api"?"disabled":""}>提交分发</button></div></div>`;
+}
+function submitDist(){
+  const c=F.clip; c.used=true;
+  const j={no:`D-1126-${String(++seq).padStart(3,"0")}`, clip:{id:c.id,title:c.title,th:c.th,mb:c.mb}, pid:F.pid, h:F.h, at:F.at.slice(5).replace("-","/").replace("T"," "), st:"draft", by:null, cap:F.cap, kw:F.kw, step:1};
+  JOBS.unshift(j); cr(F.h).today++;
+  $("#drawer-ov").hidden=true; tab="sched"; render(); openConfirm(j.no);
+}
+
+// ---------- confirm / detail ----------
+function digest(j){ let s=JSON.stringify([j.clip.id,j.pid,j.h,j.at,j.cap,j.kw]),h=0x811c9dc5,out=""; for(let r=0;r<8;r++){for(const ch of s+r){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)>>>0} out+=h.toString(16).padStart(8,"0")} return out; }
+function openConfirm(no){
+  const j=JOBS.find(x=>x.no===no), p=prod(j.pid);
+  $("#modal").innerHTML = `<h2 style="margin:0 0 4px;font-size:19px">确认分发 ${E(j.no)}</h2>
+    <div class="meta">看一遍片、品、号、时间和文案，确认后到点自动发；改任何一项都要重新确认。</div>
+    <dl class="sum"><dt>片</dt><dd>${E(j.clip.title)}（${E(j.clip.id)}，${j.clip.mb} MB）</dd><dt>商品</dt><dd>${E(p.t)} · <span class="pid">${j.pid}</span></dd>
+      <dt>挂车名称</dt><dd>${E(j.kw||p.k)}</dd><dt>达人号</dt><dd>${E(j.h)}</dd><dt>发布时间</dt><dd>北京 ${E(j.at)}</dd><dt>文案</dt><dd>${E(j.cap)}</dd><dt>AI 标识</dt><dd>带</dd>
+      <dt>内容摘要</dt><dd><div class="digest">${digest(j)}</div><div class="hint">由片的文件指纹、商品、号、时间、文案算出；发之前再算一次，对不上就不发。</div></dd>
+      <dt>确认人</dt><dd>小草（当前身份）</dd></dl>
+    <label class="meta">确认依据（必填，例如「已看完整片，商品对得上」）</label><textarea id="c-ref">已看完整片，商品和挂车名称对得上。</textarea>
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px"><button class="btn ghost" id="mclose">先不确认</button><button class="btn" id="mok" data-no="${j.no}">确认分发</button></div>`;
+  $("#modal-ov").hidden=false;
+}
+function openDetail(no){
+  const j=JOBS.find(x=>x.no===no), p=prod(j.pid), s=ST[j.st];
+  const bad = ["blocked","reauth","uncertain","expired"].includes(j.st);
+  const steps = STEPS.map((t,i)=>{ const k = i<j.step ? "done" : i===j.step ? (bad?"bad":"now") : ""; return `<li class="${k}"><span class="dot"></span><span>${t}${i===j.step&&bad?`<br><small style="color:var(--red)">${E(j.why)}</small>`:""}</span><small>${i<j.step?"✓":""}</small></li>`}).join("");
+  const canCancel = ["draft","confirmed","prechecking","ready","blocked","reauth","expired"].includes(j.st);
+  $("#modal").innerHTML = `<h2 style="margin:0 0 2px;font-size:19px">${E(j.clip.title)} → ${E(j.h)} <span class="chip ${s[1]}">${s[0]}</span></h2>
+    <div class="meta">分发单 ${E(j.no)} · 发布 ${E(j.at)}（北京）· 商品 ${E(p.t)} <span class="pid">${j.pid}</span></div>
+    <ol class="tl">${steps}</ol>
+    <h3 style="font-size:14px;margin:14px 0 6px">写回分发单</h3>
+    <dl class="wb"><dt>视频链接</dt><dd>${j.vid?`<a href="#" onclick="return false">tiktok.com/${E(j.h)}/video/${j.vid}</a>`:"发出后自动填"}</dd>
+      <dt>购物车商品</dt><dd>${E(p.t)}（发出后核对视频上挂的商品 ID）</dd>
+      <dt>订单 / 佣金</dt><dd>${j.vid?`${j.orders} 单 · 预估 ${j.comm}（每天更新）`:"发出后第二天开始写回"}</dd>
+      <dt>失败原因</dt><dd>${j.why?E(j.why):"—"}</dd></dl>
+    <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap">
+      <a class="btn ghost" style="text-decoration:none" href="index.html?screen=s7">达人看到的这一条 →</a>
+      <div style="display:flex;gap:8px">${j.st==="draft"?`<button class="btn" id="d-confirm" data-no="${j.no}">确认分发</button>`:""}
+      ${["blocked","expired"].includes(j.st)?`<button class="btn plum" data-fix="${j.no}">改好后重新确认</button>`:""}
+      ${canCancel?`<button class="btn danger" data-cancel="${j.no}">取消分发</button>`:`<button class="btn danger" disabled title="已调用发布接口，不能取消">已发出，不能取消</button>`}
+      <button class="btn ghost" id="mclose">关闭</button></div></div>`;
+  $("#modal-ov").hidden=false;
+}
+
+// ---------- events ----------
+document.addEventListener("click", e => {
+  const t = e.target.closest("button,a,[data-job]"); if(!t) return;
+  if (t.dataset.nav==="other"){ e.preventDefault(); $("#view").innerHTML=`<div class="placeholder">演示稿只做了「分发」这一页；其他页面和正式后台一样，不在这次范围内。</div>`; $("#aside").innerHTML=""; document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("on",n===t)); return; }
+  if (t.dataset.nav==="dist"){ e.preventDefault(); document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("on",n===t)); render(); return; }
+  if (t.dataset.tab){ tab=t.dataset.tab; render(); return; }
+  if (t.dataset.dist){ openDist(t.dataset.dist); return; }
+  if (t.dataset.job){ openDetail(t.dataset.job); return; }
+  if (t.id==="go-acc"){ location.href="index.html?screen=s1"; return; }
+  if (t.dataset.h){ if (t.getAttribute("aria-disabled")) { toast(t.querySelector(".why").textContent+"，不能选"); return; } F.h=t.dataset.h; drawDrawer(); return; }
+  if (t.dataset.route){ F.route=t.dataset.route; drawDrawer(); return; }
+  if (t.id==="dx"||t.id==="dcancel"){ $("#drawer-ov").hidden=true; return; }
+  if (t.id==="dsubmit"){ submitDist(); return; }
+  if (t.id==="mclose"){ $("#modal-ov").hidden=true; return; }
+  if (t.id==="d-confirm"){ openConfirm(t.dataset.no); return; }
+  if (t.id==="mok"){ if(!$("#c-ref").value.trim()){ toast("确认依据要填"); return; } const j=JOBS.find(x=>x.no===t.dataset.no); j.st="confirmed"; j.by="小草"; j.step=2; $("#modal-ov").hidden=true; render(); toast("已确认。发布前 20 分钟自动上传和预审，到点发出。"); return; }
+  if (t.dataset.cancel){ const j=JOBS.find(x=>x.no===t.dataset.cancel); j.st="cancelled"; $("#modal-ov").hidden=true; render(); toast("已取消，这条不会发出。"); return; }
+  if (t.dataset.fix){ const j=JOBS.find(x=>x.no===t.dataset.fix); j.st="draft"; j.step=1; j.why=null; $("#modal-ov").hidden=true; tab="sched"; render(); openConfirm(j.no); return; }
+});
+document.addEventListener("input", e => {
+  if (!F) return;
+  const id=e.target.id;
+  if (id==="f-pid"){ F.pid=e.target.value.trim(); F.kw=prod(F.pid).k||F.kw; }
+  else if (id==="f-kw") F.kw=e.target.value;
+  else if (id==="f-at") F.at=e.target.value;
+  else if (id==="f-cap") F.cap=e.target.value;
+  else if (id==="f-ai") F.ai=e.target.checked;
+  else return;
+  const pos = e.target.selectionStart, keep=id; drawDrawer(); const el=document.getElementById(keep); if(el){ el.focus(); try{ if(pos!=null) el.setSelectionRange(pos,pos);}catch(_){} }
+});
+["drawer-ov","modal-ov"].forEach(id=>$("#"+id).addEventListener("click",e=>{ if(e.target.id===id) e.target.hidden=true; }));
+// ?view=new opens the new-distribution drawer, ?view=job:D-1125-014 opens a job (for screenshots / links)
+const v = new URLSearchParams(location.search).get("view");
+render();
+if (v==="new"){ openDist(CLIPS[0].id); F.h="@lena.homefinds"; drawDrawer(); }
+else if (v && v.startsWith("job:")) openDetail(v.slice(4));
+else if (v && v.startsWith("tab:")){ tab=v.slice(4); render(); }
+</script>
+</body>
+</html>
